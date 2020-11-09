@@ -99,6 +99,34 @@
                     </section>
                 </div>
                 <!-- !tag -->
+                <!-- filter -->
+                {% if cafes %}
+                <div class="filter-bg">
+                    <section class="filter-wrap">
+                        <ul class="filter-list">
+                            {% for cafe in cafes %}
+                            <li class="filter-item">
+                                <a href="" class="filter">
+                                    <div class="filter-content">
+                                        <div class="filter-img">
+                                            <img src="https://media-cdn.tripadvisor.com/media/photo-s/10/e5/73/92/photo1jpg.jpg">
+                                        </div>
+                                        <div class="filter-text">
+                                            <div class="info">
+                                                <span>{{ cafe.name }}</span>
+                                            </div>
+                                            <div class="etc">
+                                                {{ cafe.desc }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            {% endfor %}
+                        </ul>
+                    </section>
+                </div>
+                {% else %}
 				<div class="filter-bg">
 					<section class="filter-wrap">
 						<ul class="filter-list">
@@ -189,6 +217,8 @@
 						</ul>
 					</section>
 				</div>
+                {% endif %}
+                <!-- !filter -->
 				<div class="activity-bg">
 					<section class="activity-wrap">
 						<div class="activity-intro">
