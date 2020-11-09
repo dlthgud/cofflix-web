@@ -291,7 +291,8 @@ a, a:hover, a:focus {
 	overflow: hidden;
 	min-width: 1190px;
 	width: 100%;
-	height: 588px;
+	/* min-height: 588px; */
+    height: calc(100vh - 70px);
 	display: flex;
 	align-items: stretch;
 	justify-content: center;
@@ -335,24 +336,6 @@ a, a:hover, a:focus {
 
 .main-text span {
 	white-space: pre-line;
-}
-
-.activity-bg {
-	margin-bottom: 20px;
-	margin-top: 0px;
-	padding-left: 0px;
-	padding-right: 0px;
-}
-
-.activity-wrap {
-	background-color: rgb(0, 0, 0);
-	padding: 48px 40px 64px;
-	max-width: 1600px;
-}
-
-.activity-intro {
-	display: flex;
-	margin-bottom: 24px;
 }
 
 .intro-text {
@@ -399,14 +382,14 @@ a, a:hover, a:focus {
     overflow:hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-    height: 30px;
+    height: 40px;
     line-height: 20px;
-    padding: 5px 8px;
+    padding: 10px 13px;
     background-color: #fff;
     margin: 16px 8px 0;
     box-sizing: border-box;
     border: 1px solid rgba(0, 0, 0, 0.2);
-    border-radius: 15px;
+    border-radius: 20px;
     outline: none;
 }
 
@@ -422,8 +405,8 @@ a, a:hover, a:focus {
 .filter-bg {
 	margin-top: 40px;
 	margin-bottom: 24px;
-	padding-left: 40px;
-	padding-right: 40px;
+	padding-left: 90px;
+	padding-right: 90px;
 }
 
 .filter-wrap {
@@ -440,10 +423,10 @@ a, a:hover, a:focus {
 	display: flex;
 	flex-direction: column;
 	flex: none;
-	max-width: 14.2857%;
-	flex-basis: 14.2857%;
+	max-width: 25%;
+	flex-basis: 25%;
 	margin-top: 20px;
-	padding: 0 5px;
+	padding: 0 17px;
 	box-sizing: border-box;
 }
 
@@ -456,7 +439,9 @@ a, a:hover, a:focus {
 
 .filter-img {
 	flex: auto;
-	background-color: #dcdcdf;
+	/* background-color: #dcdcdf; */
+    padding-bottom: 66.6667%;
+    position: relative;
 }
 
 .filter-img img {
@@ -465,6 +450,7 @@ a, a:hover, a:focus {
 	object-fit: cover;
 	height: 100%;
 	width: 100%;
+    position: absolute;
 }
 
 .filter-text {
@@ -475,12 +461,37 @@ a, a:hover, a:focus {
 	white-space: normal;
 	font-size: 13px;
 	line-height: 22px;
-	max-height: 44px;
+	/* max-height: 44px; */
 	overflow: hidden;
 	text-overflow: ellipsis;
 	color: rgb(34, 34, 34);
-	font-weight: 600;
 	/* white-space: pre-line; */
+}
+
+.info {
+    font-weight: 600;
+}
+
+/* activity */
+
+.activity-bg {
+	margin-bottom: 20px;
+	margin-top: 0px;
+	padding-left: 0px;
+	padding-right: 0px;
+}
+
+.activity-wrap {
+	background-color: rgb(0, 0, 0);
+	padding: 48px 40px 64px;
+	max-width: 1600px;
+    min-height: 930px;
+    height: calc(100vh - 80px);
+}
+
+.activity-intro {
+	display: flex;
+	margin-bottom: 24px;
 }
 
 .activity-link {
