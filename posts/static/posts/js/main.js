@@ -22,7 +22,7 @@ $(document).ready(function() {
                     str += '<a href="" class="filter">';
                     str += '<div class="filter-content">';
                     str += '<div class="filter-img">';
-                    str += '<img src="https://media-cdn.tripadvisor.com/media/photo-s/10/e5/73/92/photo1jpg.jpg">';
+                    str += '<img src="' + cafe['img'] + '">';
                     str += '</div>';
                     str += '<div class="filter-text">';
                     str += '<div class="info">';
