@@ -43,14 +43,21 @@
             <select>
                 <option value="gangnam">강남구</option>
             </select>
-            <p>도로명주소</p>
-            <input type="text" id="address" size="60">
-            <p>동 호수</p>
-            <input type="text" id="roomnumber" size="60">
-            <p>우편번호</p>
-            <input type="text" id="post" size="60">
             
-            <br><button type="submit">계속</button>
+            <div class="address">
+                <label>도로명주소</label>
+                <input type="text" id="address" height= "30" size="60">
+                <label>동 호수</label>
+                <input type="text" id="roomnumber" size="60">
+                <label>우편번호</label>
+                <input type="text" id="post" size="60">
+            </div>
+
+            
+            <br>
+            <a href="{% url 'posts:theme' %}">
+                <button type="submit">계속</button>
+            </a>
         </div>
         <div class="container_image">
             <img id="cafe" src="{% static 'posts/images/cafe1.jpg' %}"></img>

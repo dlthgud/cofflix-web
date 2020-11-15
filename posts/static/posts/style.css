@@ -1,11 +1,3 @@
-label {
-    display: block;
-    line-height: 2.5;
-}
-
-input {
-    height: 20px;
-}
 
 #cafe{
     width: 600px;
@@ -29,6 +21,7 @@ input {
 }
 
 
-#welcome{
-    background-image: none;
+.address{
+    line-height: 160%;
+    height: 200px;
 }
