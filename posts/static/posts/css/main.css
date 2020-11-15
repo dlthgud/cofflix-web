@@ -138,8 +138,8 @@
 .filter-bg {
 	margin-top: 40px;
 	margin-bottom: 24px;
-	padding-left: 90px;
-	padding-right: 90px;
+	padding-left: 40px;
+	padding-right: 40px;
 }
 
 .filter-wrap {
@@ -156,10 +156,10 @@
 	display: flex;
 	flex-direction: column;
 	flex: none;
-	max-width: 25%;
-	flex-basis: 25%;
+	max-width: 14.2857%;
+	flex-basis: 14.2857%;
 	margin-top: 20px;
-	padding: 0 17px;
+	padding: 0 5px;
 	box-sizing: border-box;
 }
 
@@ -172,7 +172,7 @@
 
 .filter-img {
 	flex: auto;
-	/* background-color: #dcdcdf; */
+	background-color: #dcdcdf;
     padding-bottom: 66.6667%;
     position: relative;
 }
@@ -194,14 +194,11 @@
 	white-space: normal;
 	font-size: 13px;
 	line-height: 22px;
-	/* max-height: 44px; */
+	max-height: 44px;
 	overflow: hidden;
 	text-overflow: ellipsis;
 	color: rgb(34, 34, 34);
 	/* white-space: pre-line; */
-}
-
-.info {
     font-weight: 600;
 }
 
