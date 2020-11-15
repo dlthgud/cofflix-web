@@ -1,5 +1,6 @@
 $(document).ready(function() {
-    $('.tag-box input').click(function() {
-        $(this).toggleClass('active');
+    $('.filter').click(function() {
+        const keyword = $(this).find('.filter-text span').text();
+        location.href = '/lists/?keywords[]=' + keyword;
     });
 });
