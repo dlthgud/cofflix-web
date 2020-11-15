@@ -1,0 +1,65 @@
+{% load static %}
+<!-- header -->
+<header id="header">
+    <div class="header-inner">
+        <h1 id="logo">
+            <a href="/">
+                <span class="blind">COFFLX</span>
+                <img src="{% static 'posts/images/logo-2.png' %}">
+            </a>
+        </h1>
+        <!-- search -->
+        <div id="search">
+            <form id="search-form" class="search-form" action="" method="get">
+                <fieldset>
+                    <legend class="blind">검색</legend>
+                    <div class="search-window">
+                        <input id="query" name="query" type="text" title="검색어 입력" maxlength="255" class="input-text" placeholder="검색">
+                        <button id="search-btn" type="submit" title="검색" class="btn-submit">
+                            <span class="blind">검색</span>
+                        </button>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+        <!-- !search -->
+        <nav id="gnb">
+            <div class="gnb-inner">
+                <ul class="list-nav">
+                    <li class="nav-item">
+                        <a href="{% url 'posts:host' %}" class="nav">
+                            <span class="nav-text">업체등록하기</span>
+                        </a>
+                    </li>
+                    <li class="nav-item mr8">
+                        <button class="nav">
+                            <div class="nav-img">
+                                <img src="https://i.pinimg.com/474x/a3/a6/a0/a3a6a020c91a24f4d44fc154d9f68db9.jpg">
+                            </div>
+                        </button>
+                    </li>
+                    <li class="nav-item">
+                        <button class="nav item-box">
+                            <div class="ham">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 28 28">
+                                    <path fill="#0F0F14" fill-rule="evenodd" d="M2 8h24V6H2v2zm0 7h24v-2H2v2zm0 7h16v-2H2v2z"/>
+                                </svg>
+                            </div>
+                            <div class="profile">
+                                <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 27 26">
+                                    <defs>
+                                        <style>
+                                            .cls-1 { fill: #626974; }
+                                        </style>
+                                    </defs>
+                                    <path class="cls-1" d="M16,13.36a5.35,5.35,0,1,0-5,0,9.46,9.46,0,0,0-6.92,9.09V23H22.93v-.5A9.46,9.46,0,0,0,16,13.36ZM9.14,8.68A4.35,4.35,0,1,1,13.57,13h-.16A4.35,4.35,0,0,1,9.14,8.68ZM5.06,22A8.47,8.47,0,0,1,13.4,14h.17A8.46,8.46,0,0,1,21.91,22Z"/>
+                                </svg>
+                            </div>
+                        </button>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+</header>
+<!-- !header -->
