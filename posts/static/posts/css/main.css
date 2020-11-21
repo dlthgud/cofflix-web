@@ -216,7 +216,7 @@
 	padding: 48px 40px 64px;
 	max-width: 1600px;
     min-height: 930px;
-    height: calc(100vh - 80px);
+    /* height: calc(100vh - 80px); */
 }
 
 .activity-intro {
@@ -341,19 +341,82 @@
 	font-weight: 600;
 }
 
-#footer {
-	background-color: #fafbfc;
-	border-top: 1px solid #e4e8eb;
+.activity-popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.39);
+    z-index: 2000;
+    display: none;
 }
 
-#footer .footer-inner {
-	width: 1130px;
-	padding: 0 30px 92px;
-	margin: 0 auto;
-	padding-top: 25px;
-	/* margin-right: 13px; */
-	color: #777;
-	font-weight: 700;
-	align-items: center;
-	text-align: center;
+.activity-ready {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 500px;
+    border-radius: 24px;
+    box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.25);
+    background-color: #fff;
+}
+
+.ready-text {
+    padding-top: 60px;
+    padding-left: 50px;
+    margin-bottom: 100px;
+}
+
+.ready-text p {
+    font-size: 30px;
+    font-weight: bold;
+    line-height: 44px;
+    letter-spacing: -1px;
+    text-align: left;
+}
+
+.ready-more::before {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 5px;
+    left: 0;
+    height: 16px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+}
+
+.ready-text .ready-more {
+    position: relative;
+    padding-left: 14px;
+    margin-top: 10px;
+    font-weight: normal;
+    line-height: 150%;
+    font-size: 16px;
+}
+
+.close-box {
+    padding-top: 40px;
+    padding-right: 50px;
+    width: 100%;
+    height: 100px;
+    border-radius: 24px;
+    box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.25);
+    background-color: #fafbff;
+    text-align: right;
+}
+
+.close-btn {
+    display: inline-block;
+    vertical-align: middle;
+    padding-bottom: 5px;
+    height: 28px;
+    font-size: 16px;
+    line-height: 22px;
+    letter-spacing: -1px;
+    font-weight: normal;
+    margin-left: 35px;
 }
