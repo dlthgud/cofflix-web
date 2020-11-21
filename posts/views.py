@@ -7,6 +7,7 @@ def main(request):
     return render(request, 'posts/main.html')
 
 
+
 def host(request):
     return render(request, 'posts/host.html')
 
@@ -52,7 +53,7 @@ def lists(request):
     }
 
     keywords = []
-    print(request.GET)
+    # print(request.GET)
     if 'keywords[]' in request.GET.keys():
         keywords = request.GET.getlist('keywords[]')
         for keyword in keywords:
