@@ -1,0 +1,232 @@
+{% extends "base.html" %}
+{% load static %}
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/header.css' %}">
+<!-- reset.css     -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@4.0.1/reset.min.css" />
+<!-- normalize.css -->
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" />
+<!-- 사용자 스타일 -->
+    <link rel="stylesheet" href="{% static 'posts/css/detail.css' %}" />
+{% endblock %}
+{% block header %}
+{% include "header.html" %}
+{% endblock %}
+{% block content %}
+    <!-- Container_1 -->
+    <div class="container_1">
+        <div class="container_img">
+            <ul class="container_img_control">
+                <li class="container_img_bg_1">
+                    <a href="#"></a>
+                </li>
+                <li class="container_img_bg_2">
+                    <a href="#"></a>
+                </li>
+                <li class="container_img_bg_3">
+                    <a href="#"></a>
+                </li>
+                <li class="container_img_bg_4">
+                    <a href="#"></a>
+                </li>
+                <li class="container_img_bg_5">
+                    <a href="#"></a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!-- Container_2 -->
+    <div class="container_2">
+        <div class="container_2_control">
+            <div class="container_2_mainfont">
+                로우커피스탠드<span class="container_2_mainnumber">4.5</span>
+            </div>
+            <div class="container_2_review_img">
+                <div class="container_2_review_icon">
+                    <span class="container_2_review_icon_font">리뷰쓰기</span>
+                </div>
+                <div class="container_2_review_icon">
+                    <span class="container_2_star_icon_font">가고싶다</span>
+                </div>
+                <div class="container_2_icon_control">
+                    <div class="container_2_icon_pencil"></div>
+                    <div class="container_2_icon_star"></div>
+                </div>
+                <div class="container_2_icon_control2">
+                    <div class="container_2_icon_move">
+                        <div class="container_2_icon_eye">눈</div>
+                        <div class="container_2_icon_pencil_2">연필</div>
+                        <div class="container_2_icon_star_2">별</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container_2_bottomline"></div>
+    <!-- Table -->
+<tbody>
+    <div class="main_table">
+        <div class="main_table_control">
+            <tr class="main_table_1">
+                <th class="informaiton_address-1">주소</th>
+                <td class="informaiton_address_control-1">
+                    <span class="informaiton_address_font-1">서울특별시 서대문구 연희로25길 22<br></span>
+                    <span class="informaiton_address_1-1">지번</span>
+                    <span class="informaiton_address_2-1">서울시 서대문구 연희동 82-3</span>
+                </td>
+            </tr>
+        </div>
+        <div class="main_table_control_2">
+            <tr class="main_table_2">
+                <th class="informaiton_telephone-2">전화번호</th>
+                <td class="informaiton_telephone_control-2">
+                    <span class="informaiton_telephone_1-1">02-336-9483</span>
+                </td>
+            </tr>
+        </div>
+        <div class="main_table_control_3">
+            <tr class="main_table_3">
+                <th class="informaiton_category-3">카테고리</th>
+                <td class="informaiton_category_control-3">
+                    <span class="informaiton_category_1-1">테라스가 있는</span>
+                </td>
+            </tr>
+        </div>
+        <div class="main_table_control_4">
+            <tr class="main_table_4">
+                <th class="informaiton_price-4">가격대</th>
+                <td class="informaiton_price_control-4">
+                    <span class="informaiton_price_1-1">10,000~17,000원</span>
+                </td>
+            </tr>
+        </div>
+        <div class="main_table_control_5">
+            <tr class="main_table_5">
+                <th class="informaiton_parking-5">주차</th>
+                <td class="informaiton_parking_control-5">
+                    <span class="informaiton_parking_1-1">유료 주차가능</span>
+                </td>
+            </tr>
+        </div>
+        <div class="main_table_control_6">
+            <tr class="main_table_6">
+                <th class="informaiton_opentime-6">영업시간</th>
+                <td class="informaiton_opentime_control-6">
+                    <span class="informaiton_opentime_1-1">11:00 ~ 24:00</span>
+                </td>
+            </tr>
+        </div>
+        <div class="main_table_control_7">
+            <tr class="main_table_7">
+                <th class="informaiton_lastorder-7">마지막주문</th>
+                <td class="informaiton_lastorder_control-7">
+                    <span class="informaiton_lastorder_1-1">22:00</span>
+                </td>
+            </tr>
+        </div>
+        <div class="main_table_control_8">
+            <tr class="main_table_8">
+                <th class="informaiton_holiday-8">휴일</th>
+                <td class="informaiton_holiday_control-8">
+                    <span class="informaiton_holiday_1-1">월</span>
+                </td>
+            </tr>
+        </div>
+    </div>
+</tbody>
+    <!-- Table end-->     
+    <div class="table_bottomline"></div>
+
+    <!-- Start container_3 -->
+    <div class="container_3">
+        <ul class="container_3_review_menu">
+            <li class="container_3_review_list">
+                <span class="container_3_review_review_1">리뷰</span>
+                <span class="container_3_review_tuple_1">(45)</span>
+            </li>
+        </ul>
+        <ul class="container_3_review_evaluation">
+            <li class="container_3_evaluation_list">
+                <span class="container_3_evaluation_list_1">전체</span>
+                <span class="container_3_evaluation_tuple_1">(45)</span>
+            </li>
+        </ul>
+        <ul class="container_3_review_good">
+            <li class="container_3_good_list">
+                <span class="container_3_good_list_1">맛있다</span>
+                <span class="container_3_good_tuple_1">(35)</span>
+            </li>
+        </ul>
+        <ul class="container_3_review_fine">
+            <li class="container_3_fine_list">
+                <span class="container_3_fine_list_1">괜찮다</span>
+                <span class="container_3_fine_tuple_1">(10)</span>
+            </li>
+        </ul>
+        <ul class="container_3_review_soso">
+            <li class="container_3_soso_list">
+                <span class="container_3_soso_list_1">별로</span>
+                <span class="container_3_soso_tuple_1">( 5 )</span>
+            </li>
+        </ul>
+    </div>
+    <!-- End container_3 -->
+    <!-- Start_container_4 -->
+    <section class="container_4">
+        <header class="container_4_header">
+            <div class="container_4_cafe_review_img"></div>
+            <div class="container_4_cafe_review_img_font">chef.kang</div>
+            <div class="container_4_cafe_review_img_pencil">
+                <span class="container_4_cafe_review_img_pencil_font">200</span>
+            </div>
+            <div class="container_4_cafe_review_img_star">
+                <span class="container_4_cafe_review_img_star_font">116</span>
+            </div>
+            <!-- ---------------------------------------------------------->
+            <div class="container_4_date">
+                <span class="container_4_date_font">2020-08-11</span>                
+            </div>
+            <span class="container_4_review_font">로우커피스텐드 직원들 친절하고<br>커피 너무 맛있다 <br> 주택사시에 협소한곳에 있음ㅋ~</span>
+            <div class="container_4_review_icon"></div>
+            <span class="container_4_review_icon_font">맛있다 </span>
+            <!-- -------------------------------------------------------------- -->
+            <ul class="container_4_review_img_list">
+                <li class="container_4_review_img_con">
+                    <div class="container_4_review_img__01"></div>
+                    <div class="container_4_review_img__02"></div>
+                    <div class="container_4_review_img__03"></div>                   
+                </li>
+            </ul>
+        </header>
+    </section>
+    <div class="table_bottomline01"></div>
+    
+     <!-- Start Container_4_1   -->
+    <section class="container_4_1">
+        <header class="container_4_header_1">
+            <div class="container_4_cafe_review_img_1"></div>
+            <div class="container_4_cafe_review_img_font_1">chef.kang</div>
+            <div class="container_4_cafe_review_img_pencil_1">
+                <span class="container_4_cafe_review_img_pencil_font_1">200</span>
+            </div>
+            <div class="container_4_cafe_review_img_star_1">
+                <span class="container_4_cafe_review_img_star_font_1">116</span>
+            </div>
+            <!-- ---------------------------------------------------------->
+            <div class="container_4_date_1">
+                <span class="container_4_date_font_1">2020-08-11</span>                
+            </div>
+            <span class="container_4_review_font_1">로우커피스텐드 직원들 친절하고<br>커피 너무 맛있다 <br> 주택사시에 협소한곳에 있음ㅋ~</span>
+            <div class="container_4_review_icon_1"></div>
+            <span class="container_4_review_icon_font_1">맛있다 </span>
+            <!-- -------------------------------------------------------------- -->
+            <ul class="container_4_review_img_list_1">
+                <li class="container_4_review_img_con_1">
+                    <div class="container_4_review_img__01_1"></div>
+                    <div class="container_4_review_img__02_1"></div>
+                    <div class="container_4_review_img__03_1"></div>                   
+                </li>
+            </ul>
+        </header>
+    </section>
+{% endblock %}

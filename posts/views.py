@@ -62,3 +62,7 @@ def lists(request):
         return HttpResponse(json.dumps(content), content_type="application/json")
 
     return render(request, 'posts/lists.html', content)
+
+
+def detail(request):
+    return render(request, 'posts/detail.html')
