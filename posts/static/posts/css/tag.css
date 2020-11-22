@@ -4,36 +4,34 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.1);
 }
 
 .tag-box {
     display: flex;
     height: 70px;
     padding-left: 8px;
-    background-color: #fff;
 }
 
 .tag-box input {
     flex: 0 1 auto;
     max-width: 300px;
-    overflow:hidden;
+    overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-    height: 30px;
+    height: 40px;
     line-height: 20px;
-    padding: 5px 8px;
-    background-color: #fff;
+    padding: 10px 13px;
+    background-color: #efefef;
     margin: 16px 8px 0;
     box-sizing: border-box;
     border: 1px solid rgba(0, 0, 0, 0.2);
-    border-radius: 15px;
+    border-radius: 20px;
     outline: none;
+    color: #333;
 }
 
 .tag-box input.active {
     font-weight: bold;
-    border: 1px solid #00df8f;
-    background-color: #e9fff6;
-    color: #0fae6f;
+    background-color: #af6d40;
+    color: #fff;
 }
