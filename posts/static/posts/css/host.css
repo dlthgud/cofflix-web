@@ -1,10 +1,50 @@
-label {
-    display: block;
-    line-height: 2.5;
+.container{
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    
 }
 
-input {
-    height: 20px;
+.form-info{
+    position: absolute;
+    top: 3%;
+    left: 25%;
+    
+}
+
+.form-theme{
+    position: absolute;
+    top: 48%;
+    left: 25%;
+    
+}
+
+.form-row{
+    position:relative;
+    margin-top: 10px;
+
+}
+
+.form-row input{
+    display: flex;
+    justify-content: center;
+}
+
+.input{
+    display: inline-block;
+    width: 325px;
+    height: 40px;
+    
+}
+
+.form-email input {
+    width: 145px;
+}
+
+#form-email-select{
+    width: 325px;
+    height: 40px;
+    padding: 5px 14px;
 }
 
 #cafe{
@@ -14,14 +54,8 @@ input {
     max-height: 100%;
 }
 
-.container{
-    display: flex;
-    justify-content: center;
-}
 
-.container_text{
-    padding-right: 1em;
-}
+
 
 .step1{
     padding: 0px;
@@ -31,4 +65,85 @@ input {
 
 #welcome{
     background-image: none;
+}
+
+
+.btn-signup{
+    display: flex;
+    justify-content: center;
+}
+
+
+.join-intro-contents{
+    position : center;
+    display : inline-block;
+    transform : translatey(+100%);
+    opacity : 1.0;
+}
+
+
+.btn-signup{
+    margin-top: 37px;
+    text-decoration:none;
+    vertical-align:middle;
+}
+
+.button.button-primary {
+    background: #1a7cff;
+    color: #fff;
+}
+
+.button {
+    display: inline-block;
+    padding: 16px 0 14px;
+    width: 100%;
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.form-row.has-button{
+    position: relative;
+    padding-right: 106px;
+}
+
+#sample6_postcode{
+    width: 220px;
+    height: 40px;
+    margin-top: 10px;
+}
+
+#sample6_postcode_search{
+    width: 98px;
+    height: 45px;
+    margin-top: 10px; 
+}
+
+#sample6_address{
+    width: 330px;
+    height: 40px;
+    margin-top: 10px; 
+}
+
+#sample6_detailAddress{
+    width: 220px;
+    height: 40px;
+    margin-top: 10px;
+}
+
+#sample6_extraAddress{
+    width: 98px;
+    height: 40px;
+    margin-top: 10px;
+}
+
+.btn-signup{
+    background: #1a7cff;
+    color: #fff;
+    width: 330px;
+    height: 50px;
+    display: inline-block;
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
 }
