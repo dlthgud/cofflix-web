@@ -1,19 +1,17 @@
+{% extends "base.html" %}
 {% load static %}
-
-<!DOCTYPE html>
-<html lang="ko">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cofflix</title>
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/header.css' %}">
     <link rel="stylesheet" href="{% static 'posts/css/host.css' %}" type="text/css" />
     <link rel="stylesheet" href="{% static 'posts/css/tag.css' %}">
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="{% static 'posts/js/main.js' %}"></script>
-</head>
-
-<body>
+{% endblock %}
+{% block script %}
+    <script src="{% static 'posts/js/host.js' %}"></script>
+{% endblock %}
+{% block header %}
+{% include "header.html" %}
+{% endblock %}
+{% block content %}
 <div class="container">
     {% if error%}
         <div class="alert alert-danger" role="alert">
@@ -25,22 +23,9 @@
         {% csrf_token %}
     
         <div class="container">
-            <div class = "form-info">
-            <h1>안녕하세요! <br>
+            <h1 class="info-text">안녕하세요! <br>
                 카페 등록을 시작해볼까요?</h1>
-                
-            <div class="form-row">
-                <input class="input check-id error" name="id" type="text" maxlength="20" placeholder="아이디* (4~20자)" aria-describedby="id-error" aria-invalid="true">
-            </div>
-
-
-            <div class="form-row">
-                <input class="input" name="pw" type="password" maxlength="20" placeholder="비밀번호* (영문+숫자, 8~20자)">
-            </div>
-
-            <div class="form-row">
-                <input class="input" name="pwCheck" type="password" maxlength="20" placeholder="비밀번호 재확인*">
-            </div>
+            <div class = "form-info">
             
                 <div class="form-row">
                 <input class="input" name="name" type="text" maxlength="20" placeholder="카페이름">
@@ -56,6 +41,27 @@
                     <input class="input" type="text" id="sample6_address" placeholder="카페주소"><br>
                     <input class="input" type="text" id="sample6_detailAddress" placeholder="카페상세주소">
                     <input class="input" type="text" id="sample6_extraAddress" placeholder="참고항목">
+
+                <div class="open_time">
+                    <p>영업시간 : </p>
+                    <div class="form-row select-box">
+                        <select>
+                            {% for i in "x"|rjust:"24" %}
+                            <option value="{{ forloop.counter0 }}">{{ forloop.counter0|stringformat:"02d" }}:00</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <p>부터</p>
+                    <div class="form-row select-box">
+                        <select>
+                            {% for i in "x"|rjust:"24" %}
+                            <option value="{{ forloop.counter0 }}">{{ forloop.counter0|stringformat:"02d" }}:00</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                </div>
+                
+                    
             </div>
             
             
@@ -131,9 +137,9 @@
                 </div>
                 <h3>내 카페설명</h3>
                 <textarea cols=120 rows=10 name="body"></textarea>
-                <div>
-                <button onclick="location.href='/main'" class="btn-signup" data-log-action="Cmplt/Cmplt"
-                    type="submit">등록하기</button>
+                <div class="btn-wrap">
+                    <button onclick="location.href='/main'" class="btn-signup" data-log-action="Cmplt/Cmplt"
+                        type="submit">등록하기</button>
                 </div>
                 
             </div>
@@ -143,3 +149,4 @@
 </div>
 </body>
 </html>
+{% endblock %}

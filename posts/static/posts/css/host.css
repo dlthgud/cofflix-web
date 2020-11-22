@@ -1,21 +1,54 @@
+input, textarea, button {
+    border-radius: 10px;
+    border: 1px solid #999;
+    padding: .8em .5em;
+}
+
+select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-image: url('/static/posts/images/arrow_down.svg');
+    background-repeat: no-repeat;
+    background-position: right;
+}
+select::-ms-expand {
+    display: none;
+}
+
+select {
+    margin: 0 10px;
+    width: 100px;
+    padding: .8em .5em;
+    font-family: inherit;
+    border-radius: 10px;
+    border: 1px solid #999;
+}
+
 .container{
-    position: relative;
+    margin-top: 80px;
+    margin-bottom: 30px;
     width: 100vw;
-    height: 100vh;
-    
+    line-height: 36px;
 }
 
 .form-info{
-    position: absolute;
-    top: 3%;
-    left: 25%;
+    margin: 0 auto;
+    width: fit-content;
     
 }
 
+.info-text {
+    margin: 0 auto;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    width: 825px;
+    text-align: left;
+}
+
 .form-theme{
-    position: absolute;
-    top: 48%;
-    left: 25%;
+    margin: 0 auto;
+    width: 825px;
     
 }
 
@@ -116,7 +149,8 @@
 #sample6_postcode_search{
     width: 98px;
     height: 45px;
-    margin-top: 10px; 
+    margin-top: 10px;
+    background-color: #efefef;
 }
 
 #sample6_address{
@@ -137,8 +171,12 @@
     margin-top: 10px;
 }
 
+.btn-wrap {
+    text-align: center;
+}
+
 .btn-signup{
-    background: #1a7cff;
+    background: #af6d40;
     color: #fff;
     width: 330px;
     height: 50px;
@@ -146,4 +184,12 @@
     text-align: center;
     font-size: 18px;
     font-weight: bold;
+}
+
+.open_time{
+    display: flex;
+}
+
+.open_time p {
+    margin-top: 8px;
 }
