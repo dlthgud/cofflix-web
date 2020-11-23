@@ -18,7 +18,7 @@ body, button, input, select, table, textarea {
 	color: #202020;
 	font-family: Arial, Helvetica, sans-serif;
 }
-button, input {
+button, input, textarea {
 	border-radius: 0;
 	border: 0;
     text-indent: 0;

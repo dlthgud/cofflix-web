@@ -19,7 +19,7 @@
         </div>
     {% endif %}
     
-    <form method = "POST" action = "{% url 'posts:host' %}">
+    <form id="regist" method="POST" action="{% url 'posts:regist' %}">
         {% csrf_token %}
     
         <div class="container">
@@ -32,20 +32,20 @@
                 </div>
             
                 <div class="form-row">
-                    <input class="input" name="tel" type="tel" maxlength="20" placeholder="전화번호">
+                    <input class="input tel-number" name="tel" type="tel" maxlength="20" placeholder="전화번호">
                 </div>
 
-                    <input class="input" type="text" id="sample6_postcode" placeholder="카페우편번호">
+                    <input class="input" name="postcode" type="text" id="sample6_postcode" placeholder="카페우편번호">
                     <input class="input" type="button" id="sample6_postcode_search" onclick="sample6_execDaumPostcode()"
                     value="우편번호 찾기"><br>
-                    <input class="input" type="text" id="sample6_address" placeholder="카페주소"><br>
-                    <input class="input" type="text" id="sample6_detailAddress" placeholder="카페상세주소">
+                    <input class="input" name="address" type="text" id="sample6_address" placeholder="카페주소"><br>
+                    <input class="input" name="detailAddress" type="text" id="sample6_detailAddress" placeholder="카페상세주소">
                     <input class="input" type="text" id="sample6_extraAddress" placeholder="참고항목">
 
                 <div class="open_time">
                     <p>영업시간 : </p>
                     <div class="form-row select-box">
-                        <select>
+                        <select name="openTime">
                             {% for i in "x"|rjust:"24" %}
                             <option value="{{ forloop.counter0 }}">{{ forloop.counter0|stringformat:"02d" }}:00</option>
                             {% endfor %}
@@ -53,7 +53,7 @@
                     </div>
                     <p>부터</p>
                     <div class="form-row select-box">
-                        <select>
+                        <select name="closeTime">
                             {% for i in "x"|rjust:"24" %}
                             <option value="{{ forloop.counter0 }}">{{ forloop.counter0|stringformat:"02d" }}:00</option>
                             {% endfor %}
@@ -120,6 +120,7 @@
             
             <div class="form-theme">
                 <h2>내 카페 해시태그</h2>
+                <input name="tags" type="hidden" id="tags">
                 <div class="tag-bg">
                     <section class="tag-wrap">
                     <form id="tag-form" method="get" action="" class="tag-form">
@@ -138,8 +139,8 @@
                 <h3>내 카페설명</h3>
                 <textarea cols=120 rows=10 name="body"></textarea>
                 <div class="btn-wrap">
-                    <button onclick="location.href='/main'" class="btn-signup" data-log-action="Cmplt/Cmplt"
-                        type="submit">등록하기</button>
+                    <button class="btn-signup" data-log-action="Cmplt/Cmplt"
+                        type="button">등록하기</button>
                 </div>
                 
             </div>
@@ -147,6 +148,4 @@
         </div>
     </form>
 </div>
-</body>
-</html>
 {% endblock %}
