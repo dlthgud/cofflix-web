@@ -11,10 +11,6 @@ def host(request):
     return render(request, 'posts/host.html')
 
 
-def theme(request):
-    return render(request, 'posts/theme.html')
-
-
 def lists(request):
     content = {
         "cafes": [
@@ -52,7 +48,7 @@ def lists(request):
     }
 
     keywords = []
-    print(request.GET)
+    # print(request.GET)
     if 'keywords[]' in request.GET.keys():
         keywords = request.GET.getlist('keywords[]')
         for keyword in keywords:
