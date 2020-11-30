@@ -229,3 +229,28 @@
 	width: 100%;
 	fill: currentcolor;
 }
+
+.accounts-wrap {
+    position: fixed;
+    top: 72px;
+    right: 12px;
+    padding: 24px 27px 19px 28px;
+    z-index: 2000;
+    width: 279px;
+    height: 115px;
+    border-radius: 24px;
+    box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.25);
+    background-color: #ffffff;
+}
+
+.accounts-links a {
+    display: block;
+    width: 100%;
+    line-height: 160%;
+    letter-spacing: -1px;
+    font-size: 14px;
+}
+
+.accounts-links a:nth-child(2) {
+    margin-top: 10px;
+}
