@@ -812,3 +812,10 @@ li {
     width: 860px;
     border-bottom: 1px solid rgb(199, 199, 199);
 }
+
+#map {
+    position: relative;
+    bottom: 850px;
+    left: 1051px;
+    border: 1px solid black;
+}

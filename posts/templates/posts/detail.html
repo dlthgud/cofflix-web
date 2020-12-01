@@ -229,4 +229,23 @@
             </ul>
         </header>
     </section>
+            <!-- 지도를 표시할 div -->
+            <div id='map' style='width:300px;height:200px;display:inline-block;'></div>
+            
+            <script type='text/javascript' src='//dapi.kakao.com/v2/maps/sdk.js?appkey=45522189c1ececf745d0f4c8c482b82e'></script>
+            <script>
+                var container = document.getElementById('map');  // 지도를 표시할 div
+                var options = {
+                        center: new kakao.maps.LatLng(37.5166119773031, 127.041258693516),  // 지도의 중심좌표
+                        level: 3  // 지도 확대 레벨
+                };
+                // 지도를 표시할 div 와 지도 옵션으로 지도 생성
+                var map = new kakao.maps.Map(container, options);
+                
+                // 마커생성 추가
+                var markerPosition  = new kakao.maps.LatLng(37.5166119773031, 127.041258693516);
+                var marker = new kakao.maps.Marker({position: markerPosition});
+                marker.setMap(map);
+            </script>
+
 {% endblock %}
