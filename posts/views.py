@@ -31,14 +31,10 @@ def regist(request):
             img.save()
 
     tags = request.POST['tags'].split(",")
-    for tag in tags:
-        taged = Tag.objects.filter(name=tag).first()
-        cafe.tags.add(taged.id)
-
-    images = request.FILES.getlist('image')
-    for image in images:
-        item = Image(cafe=cafe, image=image)
-        item.save()
+    if len(tags) > 0 and tags[0]:
+        for tag in tags:
+            taged = Tag.objects.filter(name=tag).first()
+            cafe.tags.add(taged.id)
 
     return redirect('posts:main')
 
