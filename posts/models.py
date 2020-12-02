@@ -23,3 +23,7 @@ class Cafe(models.Model):
 
     def __str__(self):
         return f'{self.name}: {self.address}: {self.open_time}: {self.close_time}: {self.holiday}: {self.tel}'
+
+class Image(models.Model):
+    cafe = models.ForeignKey(Cafe, on_delete=models.CASCADE, null=False)
+    image = models.ImageField(upload_to='posts', null=True)
