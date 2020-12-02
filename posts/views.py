@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.core.serializers import serialize
-from .models import Cafe, Tag
+from .models import Cafe, Tag, Image
 import json
 import datetime
 
@@ -24,10 +24,21 @@ def regist(request):
     cafe = Cafe(name=name, memo=body, address=address, open_time=ot, close_time=ct, tel=tel)
     cafe.save()
 
+    if 'image[]' in request.FILES:
+        images = request.FILES.getlist('image[]')
+        for image in images:
+            img = Image(cafe=cafe, image=image)
+            img.save()
+
     tags = request.POST['tags'].split(",")
     for tag in tags:
         taged = Tag.objects.filter(name=tag).first()
         cafe.tags.add(taged.id)
+
+    images = request.FILES.getlist('image')
+    for image in images:
+        item = Image(cafe=cafe, image=image)
+        item.save()
 
     return redirect('posts:main')
 
