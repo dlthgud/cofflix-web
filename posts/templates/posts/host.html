@@ -18,8 +18,9 @@
             {{ error }}
         </div>
     {% endif %}
-    
-    <form id="regist" method="POST" action="{% url 'posts:regist' %}">
+
+    <form id="regist" method="POST" action="{% url 'posts:regist' %}" enctype="multipart/form-data">
+
         {% csrf_token %}
     
         <div class="container">
@@ -125,19 +126,33 @@
                     <section class="tag-wrap">
                     <form id="tag-form" method="get" action="" class="tag-form">
                         <div class="tag-box">
-                            <input type="button" name="tag" value="주차가능한">
-                            <input type="button" name="tag" value="디카페인">
-                            <input type="button" name="tag" value="브런치카페">
-                            <input type="button" name="tag" value="분위기좋은">
-                            <input type="button" name="tag" value="반려동물동반">
-                            <input type="button" name="tag" value="작업하기좋은">
+                            <input type="button" name="tag" value="직접로스팅하는">
+                            <input type="button" name="tag" value="디저트가맛있는">
                             <input type="button" name="tag" value="늦게문닫는">
+                            <input type="button" name="tag" value="작업하기좋은">
+                        </div>
+                        <div class="tag-box">
+                            <input type="button" name="tag" value="반려동물동반">
+                            <input type="button" name="tag" value="브런치카페">
+                            <input type="button" name="tag" value="테라스가있는">
+                            <input type="button" name="tag" value="주차가능한">
                         </div>
                     </form>
                     </section>
                 </div>
-                <h3>내 카페설명</h3>
-                <textarea cols=120 rows=10 name="body"></textarea>
+
+                <div class="form-group">
+                    <h2><label for="image">이미지</label><br></h2>
+                    <input type="file" class="form-control-file" id="image" name="image" />
+                    <input type="file" class="form-control-file" id="image" name="image" />
+                    <input type="file" class="form-control-file" id="image" name="image" />
+                    <input type="file" class="form-control-file" id="image" name="image" />
+                    <input type="file" class="form-control-file" id="image" name="image" />
+                </div>
+
+                <h2>내 카페설명</h2>
+                <textarea cols=135 rows=10 name="body"></textarea>
+                
                 <div class="btn-wrap">
                     <button class="btn-signup" data-log-action="Cmplt/Cmplt"
                         type="button">등록하기</button>
