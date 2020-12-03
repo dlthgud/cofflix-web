@@ -45,7 +45,11 @@
                     <a href="" class="filter">
                         <div class="filter-content">
                             <div class="filter-img">
-                                <!-- <img src="{{ cafe.img }}"> -->
+                                {% if cafe.image_set.first %}
+                                <img src="{{ cafe.image_set.first.image.url }}">
+                                {% else %}
+                                <img src="{% static 'posts/images/logo-2.png' %}">
+                                {% endif %}
                             </div>
                             <div class="filter-text">
                                 <div class="info">
