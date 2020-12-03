@@ -20,13 +20,13 @@
         <section class="tag-wrap">
             <form id="tag-form" method="get" action="" class="tag-form">
                 <div class="tag-box">
-                    <input type="button" name="tag" value="테라스">
-                    <input type="button" name="tag" value="주차가능">
-                    <input type="button" name="tag" value="애완동물동반">
-                    <input type="button" name="tag" value="1인카페">
-                    <input type="button" name="tag" value="소파가편한">
-                    <input type="button" name="tag" value="산미가 나는 원두">
+                    <input type="button" name="tag" value="주차가능한">
                     <input type="button" name="tag" value="디카페인">
+                    <input type="button" name="tag" value="브런치카페">
+                    <input type="button" name="tag" value="분위기좋은">
+                    <input type="button" name="tag" value="반려동물동반">
+                    <input type="button" name="tag" value="작업하기좋은">
+                    <input type="button" name="tag" value="늦게문닫는">
                 </div>
             </form>
         </section>
@@ -45,14 +45,14 @@
                     <a href="" class="filter">
                         <div class="filter-content">
                             <div class="filter-img">
-                                <img src="{{ cafe.img }}">
+                                <!-- <img src="{{ cafe.img }}"> -->
                             </div>
                             <div class="filter-text">
                                 <div class="info">
                                     <span>{{ cafe.name }}</span>
                                 </div>
                                 <div class="etc">
-                                    {{ cafe.desc }}
+                                    {{ cafe.address }}
                                 </div>
                             </div>
                         </div>

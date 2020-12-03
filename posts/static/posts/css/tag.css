@@ -1,15 +1,18 @@
 /* tag */
 
 .tag-wrap {
-    display: flex;
+    display: block;
     justify-content: center;
     align-items: center;
+    max-width: 625px;
+    margin: 0 auto;
 }
 
 .tag-box {
     display: flex;
     height: 70px;
     padding-left: 8px;
+    justify-content: space-between;
 }
 
 .tag-box input {
