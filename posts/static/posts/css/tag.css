@@ -1,0 +1,40 @@
+/* tag */
+
+.tag-wrap {
+    display: block;
+    justify-content: center;
+    align-items: center;
+    max-width: 625px;
+    margin: 0 auto;
+}
+
+.tag-box {
+    display: flex;
+    height: 70px;
+    padding-left: 8px;
+    justify-content: space-between;
+}
+
+.tag-box input {
+    flex: 0 1 auto;
+    max-width: 300px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    height: 40px;
+    line-height: 20px;
+    padding: 10px 13px;
+    background-color: #efefef;
+    margin: 16px 8px 0;
+    box-sizing: border-box;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 20px;
+    outline: none;
+    color: #333;
+}
+
+.tag-box input.active {
+    font-weight: bold;
+    background-color: #af6d40;
+    color: #fff;
+}
