@@ -141,7 +141,53 @@
 			</ul>
 		</section>
 	</div>
-	<div class="activity-bg">
+    {% if cafes %}
+    <div class="rcmd-bg">
+        <div class="rcmd-wrap">
+            <div class="rcmd-text">
+                <h2>
+                    COFFLIX가 추천하는 카페
+                </h2>
+            </div>
+            <div class="rcmd-content">
+                <div class="page-btn">
+                    <button type="button" class="prev-btn">
+                        <img src="{% static 'posts/images/arrow_left.svg' %}">
+                    </button>
+                    <button type="button" class="next-btn">
+                        <img src="{% static 'posts/images/arrow_right.svg' %}">
+                    </button>
+                </div>
+                <ul class="cafe-list">
+                    {% for cafe in cafes %}
+                    <li class="cafe-item">
+                        <a href="" class="cafe">
+                            <div class="cafe-content">
+                                <div class="cafe-img">
+                                    {% if cafe.image_set.first %}
+                                    <img src="{{ cafe.image_set.first.image.url }}">
+                                    {% else %}
+                                    <img src="{% static 'posts/images/logo-2.png' %}">
+                                    {% endif %}
+                                </div>
+                                <div class="cafe-text">
+                                    <div class="info">
+                                        <span>{{ cafe.name }}</span>
+                                    </div>
+                                    <div class="etc">
+                                        {{ cafe.address }}
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+	<div class="activity-bg" style="display: none;">
 		<section class="activity-wrap">
 			<div class="activity-intro">
 				<div class="intro-text">

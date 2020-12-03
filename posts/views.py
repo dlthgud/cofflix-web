@@ -1,13 +1,15 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.core.serializers import serialize
-from .models import Cafe, Tag
+from .models import Cafe, Tag, Image
 import json
 import datetime
 
 
 def main(request):
-    return render(request, 'posts/main.html')
+    cafes = Cafe.objects.all().order_by("?")[:4]
+    context = { 'cafes': cafes }
+    return render(request, 'posts/main.html', context)
 
 
 def host(request):
