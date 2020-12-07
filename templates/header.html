@@ -1,4 +1,7 @@
 {% load static %}
+{% load socialaccount %}
+{% providers_media_js %}
+
 <!-- header -->
 <header id="header">
     <div class="header-inner">
@@ -38,6 +41,11 @@
                             </div>
                         </button>
                     </li>
+                    {% if user.is_authenticated %}
+                    <li>
+                        <span class="nav">{{user.username}} 님이 로그인 중</span>
+                    </li>
+                    {% endif %}
                     <li class="nav-item">
                         {% if user.is_authenticated %}
                         <form action="{% url 'accounts:logout' %}" method="POST">

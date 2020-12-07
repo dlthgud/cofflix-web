@@ -1,4 +1,6 @@
 {% load static %}
+{% load socialaccount %}
+{% providers_media_js %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -58,7 +60,9 @@
             <hr>
            
             <div class="kakao-login">
-                <p>카카오톡으로 로그인</p>
+                <p>
+                    <a href="{% provider_login_url 'kakao' %}">카카오톡으로 로그인</a>
+                </p>
             </div>
 
            
