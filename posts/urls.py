@@ -9,4 +9,5 @@ urlpatterns = [
     path('host/', views.host, name='host'),
     path('regist/', views.regist, name='regist'),
     path('lists/', views.lists, name='lists'),
+    path('image/', views.image, name='image'),
 ]

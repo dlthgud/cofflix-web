@@ -38,7 +38,20 @@ function getContent() {
                 str += '<a href="" class="filter">';
                 str += '<div class="filter-content">';
                 str += '<div class="filter-img">';
-                // str += '<img src="' + cafe['img'] + '">';
+                str += '<img id="' + cafe['id'] + '" src="' + cafe['img'] + '">';
+                $.ajax({
+                    url: "/image",
+                    data: { "cafe": cafe['id'] },
+                    type: 'get',
+                    dataType: 'json',
+                    success: function(data) {
+                        if(data.image) {
+                            $('#' + cafe['id']).attr('src', data.image);
+                        } else {
+                            $('#' + cafe['id']).attr('src', '/static/posts/images/logo-2.png');
+                        }
+                    }
+                })
                 str += '</div>';
                 str += '<div class="filter-text">';
                 str += '<div class="info">';

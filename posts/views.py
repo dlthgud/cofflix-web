@@ -51,7 +51,15 @@ def lists(request):
     if request.is_ajax():
         cafes = serialize('json', cafes)
         cafes = json.loads(cafes)
-        cafes = list(map(lambda cafe: cafe["fields"], cafes))
+        cafes = list(map(lambda cafe: {'id': cafe["pk"], **cafe["fields"]}, cafes))
         return HttpResponse(json.dumps({"cafes": cafes}), content_type="application/json")
 
     return render(request, 'posts/lists.html', {"cafes": cafes})
+
+
+def image(request):
+    cafe = request.GET['cafe']
+    image = Image.objects.filter(cafe=cafe).first()
+    if image:
+        image = image.image.url
+    return HttpResponse(json.dumps({"image": image}), content_type="application/json")
