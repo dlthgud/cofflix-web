@@ -1,15 +1,36 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.core.serializers import serialize
+from django.db.models import Count
 from .models import Cafe, Tag, Image
 import json
 import datetime
 
 
 def main(request):
-    cafes = Cafe.objects.all().order_by("?")[:4]
-    context = { 'cafes': cafes }
+    total = Cafe.objects.annotate(num_tags=Count('tags')).filter(num_tags__gt=1).count()
+    cafes = Cafe.objects.annotate(num_tags=Count('tags')).filter(num_tags__gt=1).order_by('-num_tags', 'id')[:4]
+    context = {
+        'total': total,
+        'cafes': cafes,
+    }
     return render(request, 'posts/main.html', context)
+
+
+def rcmd(request):
+    num = int(request.GET['num']) - 1
+    cafe = Cafe.objects.annotate(num_tags=Count('tags')).filter(num_tags__gt=1).order_by('-num_tags', 'id')[num: num+1]
+    if cafe:
+        cafe = serialize('json', cafe)
+        cafe = json.loads(cafe)
+        cafe = list(map(lambda cafe: {'id': cafe["pk"], **cafe["fields"]}, cafe))
+        context = {
+            'result': True,
+            'cafe': cafe,
+        }
+    else:
+        context = { 'result': False }
+    return HttpResponse(json.dumps(context), content_type="application/json")
 
 
 def host(request):
