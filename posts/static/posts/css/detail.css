@@ -90,40 +90,10 @@ li {
     margin-left: 10px;
 }
 
-.container_img_bg_1 {
+.container_img_bg {
     background-image: url(/static/posts/images/dummy/1.jpg);
-    background-size: cover;
-    width: 380px;
-    height: 340px;
-    margin-right: 10px;
-}
-
-.container_img_bg_2 {
-    background-image: url(/static/posts/images/dummy/2.jpg);
-    background-size: cover;
-    width: 380px;
-    height: 340px;
-    margin-right: 10px;
-}
-
-.container_img_bg_3 {
-    background-image: url(/static/posts/images/dummy/3.jpg);
-    background-size: cover;
-    width: 380px;
-    height: 340px;
-    margin-right: 10px;
-}
-
-.container_img_bg_4 {
-    background-image: url(/static/posts/images/dummy/4.jpg);
-    background-size: cover;
-    width: 380px;
-    height: 340px;
-    margin-right: 10px;
-}
-
-.container_img_bg_5 {
-    background-image: url(/static/posts/images/dummy/5.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
     background-size: cover;
     width: 380px;
     height: 340px;

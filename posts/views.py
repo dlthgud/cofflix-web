@@ -145,11 +145,20 @@ def lists(request):
         cafes = json.loads(cafes)
         cafes = list(map(lambda cafe: {'id': cafe["pk"], **cafe["fields"]}, cafes))
         return HttpResponse(json.dumps({"cafes": cafes}), content_type="application/json")
-    
+
     return render(request, 'posts/lists.html', {"cafes": cafes})
 
-def detail(request):
-    return render(request, 'posts/detail.html')
+
+def detail(request, cafe_id):
+    try:
+        cafe = Cafe.objects.get(id=cafe_id)
+
+        return render(request, 'posts/detail.html', { "cafe": cafe })
+
+    except Cafe.DoesNotExist:
+        pass
+
+    return redirect('posts:lists')
 
 
 def image(request):

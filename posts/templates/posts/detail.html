@@ -13,25 +13,16 @@
 {% include "header.html" %}
 {% endblock %}
 {% block content %}
+{% if cafe %}
     <!-- Container_1 -->
     <div class="container_1">
         <div class="container_img">
             <ul class="container_img_control">
-                <li class="container_img_bg_1">
-                    <a href="#"></a>
+                {% for img in cafe.image_set.all %}
+                <li class="container_img_bg" style="background-image: url({{ img.image.url }})">
+                    <a href="{{ img.image.url }}"></a>
                 </li>
-                <li class="container_img_bg_2">
-                    <a href="#"></a>
-                </li>
-                <li class="container_img_bg_3">
-                    <a href="#"></a>
-                </li>
-                <li class="container_img_bg_4">
-                    <a href="#"></a>
-                </li>
-                <li class="container_img_bg_5">
-                    <a href="#"></a>
-                </li>
+                {% endfor %}
             </ul>
         </div>
     </div>
@@ -39,7 +30,7 @@
     <div class="container_2">
         <div class="container_2_control">
             <div class="container_2_mainfont">
-                로우커피스탠드<span class="container_2_mainnumber">4.5</span>
+                {{ cafe.name }}<span class="container_2_mainnumber">4.5</span>
             </div>
             <div class="container_2_review_img">
                 <div class="container_2_review_icon">
@@ -70,9 +61,7 @@
             <tr class="main_table_1">
                 <th class="informaiton_address-1">주소</th>
                 <td class="informaiton_address_control-1">
-                    <span class="informaiton_address_font-1">서울특별시 서대문구 연희로25길 22<br></span>
-                    <span class="informaiton_address_1-1">지번</span>
-                    <span class="informaiton_address_2-1">서울시 서대문구 연희동 82-3</span>
+                    <span id="cafeAddress" class="informaiton_address_font-1">{{ cafe.address }}<br></span>
                 </td>
             </tr>
         </div>
@@ -80,7 +69,7 @@
             <tr class="main_table_2">
                 <th class="informaiton_telephone-2">전화번호</th>
                 <td class="informaiton_telephone_control-2">
-                    <span class="informaiton_telephone_1-1">02-336-9483</span>
+                    <span class="informaiton_telephone_1-1">{{ cafe.tel }}</span>
                 </td>
             </tr>
         </div>
@@ -88,23 +77,9 @@
             <tr class="main_table_3">
                 <th class="informaiton_category-3">카테고리</th>
                 <td class="informaiton_category_control-3">
-                    <span class="informaiton_category_1-1">테라스가 있는</span>
-                </td>
-            </tr>
-        </div>
-        <div class="main_table_control_4">
-            <tr class="main_table_4">
-                <th class="informaiton_price-4">가격대</th>
-                <td class="informaiton_price_control-4">
-                    <span class="informaiton_price_1-1">10,000~17,000원</span>
-                </td>
-            </tr>
-        </div>
-        <div class="main_table_control_5">
-            <tr class="main_table_5">
-                <th class="informaiton_parking-5">주차</th>
-                <td class="informaiton_parking_control-5">
-                    <span class="informaiton_parking_1-1">유료 주차가능</span>
+                    <span class="informaiton_category_1-1">
+                        {{ cafe.tags.all|join:" ・ " }}
+                    </span>
                 </td>
             </tr>
         </div>
@@ -112,15 +87,7 @@
             <tr class="main_table_6">
                 <th class="informaiton_opentime-6">영업시간</th>
                 <td class="informaiton_opentime_control-6">
-                    <span class="informaiton_opentime_1-1">11:00 ~ 24:00</span>
-                </td>
-            </tr>
-        </div>
-        <div class="main_table_control_7">
-            <tr class="main_table_7">
-                <th class="informaiton_lastorder-7">마지막주문</th>
-                <td class="informaiton_lastorder_control-7">
-                    <span class="informaiton_lastorder_1-1">22:00</span>
+                    <span class="informaiton_opentime_1-1">{{ cafe.open_time }} ~ {{ cafe.close_time }}</span>
                 </td>
             </tr>
         </div>
@@ -128,7 +95,7 @@
             <tr class="main_table_8">
                 <th class="informaiton_holiday-8">휴일</th>
                 <td class="informaiton_holiday_control-8">
-                    <span class="informaiton_holiday_1-1">월</span>
+                    <span class="informaiton_holiday_1-1">{{ cafe.holiday }}</span>
                 </td>
             </tr>
         </div>
@@ -232,8 +199,11 @@
             <!-- 지도를 표시할 div -->
             <div id='map' style='width:300px;height:200px;display:inline-block;'></div>
             
-            <script type='text/javascript' src='//dapi.kakao.com/v2/maps/sdk.js?appkey=45522189c1ececf745d0f4c8c482b82e'></script>
+            <script type='text/javascript' src='//dapi.kakao.com/v2/maps/sdk.js?appkey=45522189c1ececf745d0f4c8c482b82e&libraries=services'></script>
             <script>
+                var address = document.getElementById("cafeAddress").innerText;
+                // console.log(address);
+
                 var container = document.getElementById('map');  // 지도를 표시할 div
                 var options = {
                         center: new kakao.maps.LatLng(37.5166119773031, 127.041258693516),  // 지도의 중심좌표
@@ -241,11 +211,37 @@
                 };
                 // 지도를 표시할 div 와 지도 옵션으로 지도 생성
                 var map = new kakao.maps.Map(container, options);
-                
-                // 마커생성 추가
-                var markerPosition  = new kakao.maps.LatLng(37.5166119773031, 127.041258693516);
-                var marker = new kakao.maps.Marker({position: markerPosition});
-                marker.setMap(map);
-            </script>
 
+                // 주소-좌표 변환 객체를 생성합니다
+                var geocoder = new kakao.maps.services.Geocoder();
+
+                // 주소로 좌표를 검색합니다
+                geocoder.addressSearch(address, function(result, status) {
+
+                    // 정상적으로 검색이 완료됐으면 
+                     if (status === kakao.maps.services.Status.OK) {
+
+                        var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+                         console.log(coords);
+
+                        // 결과값으로 받은 위치를 마커로 표시합니다
+                        var marker = new kakao.maps.Marker({
+                            map: map,
+                            position: coords
+                        });
+
+                        // 인포윈도우로 장소에 대한 설명을 표시합니다
+                        var infowindow = new kakao.maps.InfoWindow({
+                            content: '<div style="width:150px;text-align:center;padding:6px 0;">{{ cafe.name }}</div>'
+                        });
+                        infowindow.open(map, marker);
+
+                        // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
+                        map.setCenter(coords);
+                    } 
+                });
+            </script>
+{% else %}
+No Cafe.
+{% endif %}
 {% endblock %}
