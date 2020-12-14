@@ -35,7 +35,7 @@ function getContent() {
             $.each(data.cafes, function(idx, cafe) {
                 // console.log(cafe);
                 str += '<li class="filter-item">';
-                str += '<a href="" class="filter">';
+                str += '<a href="/' + cafe['id'] + '" class="filter">';
                 str += '<div class="filter-content">';
                 str += '<div class="filter-img">';
                 str += '<img id="' + cafe['id'] + '" src="' + cafe['img'] + '">';

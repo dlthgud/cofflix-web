@@ -39,7 +39,7 @@
     <div class="container_2">
         <div class="container_2_control">
             <div class="container_2_mainfont">
-                로우커피스탠드<span class="container_2_mainnumber">4.5</span>
+                {{ cafe.name }}<span class="container_2_mainnumber">4.5</span>
             </div>
             <div class="container_2_review_img">
                 <div class="container_2_review_icon">
@@ -70,9 +70,7 @@
             <tr class="main_table_1">
                 <th class="informaiton_address-1">주소</th>
                 <td class="informaiton_address_control-1">
-                    <span class="informaiton_address_font-1">서울특별시 서대문구 연희로25길 22<br></span>
-                    <span class="informaiton_address_1-1">지번</span>
-                    <span class="informaiton_address_2-1">서울시 서대문구 연희동 82-3</span>
+                    <span id="cafeAddress" class="informaiton_address_font-1">{{ cafe.address }}<br></span>
                 </td>
             </tr>
         </div>
@@ -80,7 +78,7 @@
             <tr class="main_table_2">
                 <th class="informaiton_telephone-2">전화번호</th>
                 <td class="informaiton_telephone_control-2">
-                    <span class="informaiton_telephone_1-1">02-336-9483</span>
+                    <span class="informaiton_telephone_1-1">{{ cafe.tel }}</span>
                 </td>
             </tr>
         </div>
@@ -88,23 +86,9 @@
             <tr class="main_table_3">
                 <th class="informaiton_category-3">카테고리</th>
                 <td class="informaiton_category_control-3">
-                    <span class="informaiton_category_1-1">테라스가 있는</span>
-                </td>
-            </tr>
-        </div>
-        <div class="main_table_control_4">
-            <tr class="main_table_4">
-                <th class="informaiton_price-4">가격대</th>
-                <td class="informaiton_price_control-4">
-                    <span class="informaiton_price_1-1">10,000~17,000원</span>
-                </td>
-            </tr>
-        </div>
-        <div class="main_table_control_5">
-            <tr class="main_table_5">
-                <th class="informaiton_parking-5">주차</th>
-                <td class="informaiton_parking_control-5">
-                    <span class="informaiton_parking_1-1">유료 주차가능</span>
+                    <span class="informaiton_category_1-1">
+                        {{ cafe.tags.all|join:" ・ " }}
+                    </span>
                 </td>
             </tr>
         </div>
@@ -112,15 +96,7 @@
             <tr class="main_table_6">
                 <th class="informaiton_opentime-6">영업시간</th>
                 <td class="informaiton_opentime_control-6">
-                    <span class="informaiton_opentime_1-1">11:00 ~ 24:00</span>
-                </td>
-            </tr>
-        </div>
-        <div class="main_table_control_7">
-            <tr class="main_table_7">
-                <th class="informaiton_lastorder-7">마지막주문</th>
-                <td class="informaiton_lastorder_control-7">
-                    <span class="informaiton_lastorder_1-1">22:00</span>
+                    <span class="informaiton_opentime_1-1">{{ cafe.open_time }} ~ {{ cafe.close_time }}</span>
                 </td>
             </tr>
         </div>
@@ -128,7 +104,7 @@
             <tr class="main_table_8">
                 <th class="informaiton_holiday-8">휴일</th>
                 <td class="informaiton_holiday_control-8">
-                    <span class="informaiton_holiday_1-1">월</span>
+                    <span class="informaiton_holiday_1-1">{{ cafe.holiday }}</span>
                 </td>
             </tr>
         </div>

@@ -9,7 +9,7 @@ urlpatterns = [
     path('host/', views.host, name='host'),
     path('regist/', views.regist, name='regist'),
     path('lists/', views.lists, name='lists'),
-    path('detail/', views.detail, name='detail'),
+    path('<int:cafe_id>/', views.detail, name='detail'),
     path('image/', views.image, name='image'),
     path('rcmd/', views.rcmd, name='rcmd'),
 ]
