@@ -43,7 +43,7 @@
             <ul class="filter-list">
                 {% for cafe in cafes %}
                 <li class="filter-item">
-                    <a href="" class="filter">
+                    <a href="{% url 'posts:detail' %}" class="filter">
                         <div class="filter-content">
                             <div class="filter-img">
                                 {% if cafe.image_set.first %}
