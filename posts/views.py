@@ -1,7 +1,8 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.core.serializers import serialize
-from .models import Cafe, Tag
+from django.db.models import Count
+from .models import Cafe, Tag, Image
 import json
 import requests
 import datetime
@@ -71,7 +72,29 @@ if __name__ == "__main__":
  
 
 def main(request):
-    return render(request, 'posts/main.html')
+    total = Cafe.objects.annotate(num_tags=Count('tags')).filter(num_tags__gt=1).count()
+    cafes = Cafe.objects.annotate(num_tags=Count('tags')).filter(num_tags__gt=1).order_by('-num_tags', 'id')[:4]
+    context = {
+        'total': total,
+        'cafes': cafes,
+    }
+    return render(request, 'posts/main.html', context)
+
+
+def rcmd(request):
+    num = int(request.GET['num']) - 1
+    cafe = Cafe.objects.annotate(num_tags=Count('tags')).filter(num_tags__gt=1).order_by('-num_tags', 'id')[num: num+1]
+    if cafe:
+        cafe = serialize('json', cafe)
+        cafe = json.loads(cafe)
+        cafe = list(map(lambda cafe: {'id': cafe["pk"], **cafe["fields"]}, cafe))
+        context = {
+            'result': True,
+            'cafe': cafe,
+        }
+    else:
+        context = { 'result': False }
+    return HttpResponse(json.dumps(context), content_type="application/json")
 
 
 def host(request):
@@ -88,10 +111,17 @@ def regist(request):
     cafe = Cafe(name=name, memo=body, address=address, open_time=ot, close_time=ct, tel=tel)
     cafe.save()
 
+    if 'image[]' in request.FILES:
+        images = request.FILES.getlist('image[]')
+        for image in images:
+            img = Image(cafe=cafe, image=image)
+            img.save()
+
     tags = request.POST['tags'].split(",")
-    for tag in tags:
-        taged = Tag.objects.filter(name=tag).first()
-        cafe.tags.add(taged.id)
+    if len(tags) > 0 and tags[0]:
+        for tag in tags:
+            taged = Tag.objects.filter(name=tag).first()
+            cafe.tags.add(taged.id)
 
     return redirect('posts:main')
 
@@ -113,10 +143,18 @@ def lists(request):
     if request.is_ajax():
         cafes = serialize('json', cafes)
         cafes = json.loads(cafes)
-        cafes = list(map(lambda cafe: cafe["fields"], cafes))
+        cafes = list(map(lambda cafe: {'id': cafe["pk"], **cafe["fields"]}, cafes))
         return HttpResponse(json.dumps({"cafes": cafes}), content_type="application/json")
     
     return render(request, 'posts/lists.html', {"cafes": cafes})
 
 def detail(request):
     return render(request, 'posts/detail.html')
+
+
+def image(request):
+    cafe = request.GET['cafe']
+    image = Image.objects.filter(cafe=cafe).first()
+    if image:
+        image = image.image.url
+    return HttpResponse(json.dumps({"image": image}), content_type="application/json")
