@@ -13,25 +13,16 @@
 {% include "header.html" %}
 {% endblock %}
 {% block content %}
+{% if cafe %}
     <!-- Container_1 -->
     <div class="container_1">
         <div class="container_img">
             <ul class="container_img_control">
-                <li class="container_img_bg_1">
-                    <a href="#"></a>
+                {% for img in cafe.image_set.all %}
+                <li class="container_img_bg" style="background-image: url({{ img.image.url }})">
+                    <a href="{{ img.image.url }}"></a>
                 </li>
-                <li class="container_img_bg_2">
-                    <a href="#"></a>
-                </li>
-                <li class="container_img_bg_3">
-                    <a href="#"></a>
-                </li>
-                <li class="container_img_bg_4">
-                    <a href="#"></a>
-                </li>
-                <li class="container_img_bg_5">
-                    <a href="#"></a>
-                </li>
+                {% endfor %}
             </ul>
         </div>
     </div>
