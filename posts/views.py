@@ -47,10 +47,17 @@ def regist(request):
     cafe = Cafe(name=name, memo=body, address=address, open_time=ot, close_time=ct, tel=tel)
     cafe.save()
 
+    if 'image[]' in request.FILES:
+        images = request.FILES.getlist('image[]')
+        for image in images:
+            img = Image(cafe=cafe, image=image)
+            img.save()
+
     tags = request.POST['tags'].split(",")
-    for tag in tags:
-        taged = Tag.objects.filter(name=tag).first()
-        cafe.tags.add(taged.id)
+    if len(tags) > 0 and tags[0]:
+        for tag in tags:
+            taged = Tag.objects.filter(name=tag).first()
+            cafe.tags.add(taged.id)
 
     return redirect('posts:main')
 
