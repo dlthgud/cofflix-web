@@ -146,7 +146,12 @@
         <div class="rcmd-wrap">
             <div class="rcmd-text">
                 <h2>
-                    COFFLIX가 추천하는 카페
+                    {% if user.is_authenticated %}
+                    {{ user.get_username }}님께
+                    {% else %}
+                    COFFLIX가
+                    {% endif %}
+                    추천하는 카페
                 </h2>
             </div>
             <div class="rcmd-content">
