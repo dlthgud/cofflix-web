@@ -18,7 +18,7 @@
     <div class="container_1">
         <div class="container_img">
             <ul class="container_img_control">
-                {% for img in cafe.image_set.all %}
+                {% for img in cafe.image_set.all|slice:":5" %}
                 <li class="container_img_bg" style="background-image: url({{ img.image.url }})">
                     <a href="{{ img.image.url }}"></a>
                 </li>
