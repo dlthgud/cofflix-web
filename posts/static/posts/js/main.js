@@ -18,7 +18,7 @@ function drawCafeItem(num = 0) {
                             // console.log(cafe);
                             let str = '';
                             str += '<li class="cafe-item">';
-                            str += '<a href="" class="cafe">';
+                            str += '<a href="' + cafe['id'] + '" class="cafe">';
                             str += '<div class="cafe-content">';
                             str += '<div class="cafe-img">';
                             str += '<img id="' + cafe['id'] + '" src="/static/posts/images/logo-2.png">';

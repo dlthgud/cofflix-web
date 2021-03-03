@@ -166,7 +166,7 @@
                 <ul class="cafe-list">
                     {% for cafe in cafes %}
                     <li class="cafe-item">
-                        <a href="" class="cafe">
+                        <a href="{% url 'posts:detail' cafe.id %}" class="cafe">
                             <div class="cafe-content">
                                 <div class="cafe-img">
                                     {% if cafe.image_set.first %}
