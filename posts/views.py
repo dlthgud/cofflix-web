@@ -6,7 +6,6 @@ from .models import Cafe, Tag, Image
 import json
 import requests
 import datetime
-import os.path
  
 # 카카오 API 맵 
 def getLatLng(address):
@@ -168,6 +167,4 @@ def image(request):
     image = Image.objects.filter(cafe=cafe).first()
     if image:
         image = image.image.url
-    if not os.path.isfile(image):
-        image = None
     return HttpResponse(json.dumps({"image": image}), content_type="application/json")
