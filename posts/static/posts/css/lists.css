@@ -25,6 +25,7 @@
 }
 
 .tag-wrap {
+    margin: 10px 0;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -32,8 +33,10 @@
 
 .tag-box {
     display: flex;
-    height: 70px;
+    flex-wrap: wrap;
+    min-height: 70px;
     padding-left: 8px;
+    justify-content: center;
 }
 
 .tag-box input {
@@ -42,14 +45,14 @@
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-    height: 40px;
+    height: 28px;
     line-height: 20px;
-    padding: 10px 13px;
+    padding: 3px 10px;
     background-color: #e0e0e0;
-    margin: 16px 8px 0;
+    margin: 0 5px 5px 0;
     box-sizing: border-box;
     border: 1px solid rgba(0, 0, 0, 0.2);
-    border-radius: 20px;
+    border-radius: 15px;
     outline: none;
     color: #333;
 }
@@ -63,10 +66,9 @@
 /* filter */
 
 .filter-bg {
-	margin-top: 40px;
-	margin-bottom: 24px;
-	padding-left: 90px;
-	padding-right: 90px;
+	margin: 0;
+    padding: 0;
+    padding-bottom: 20px;
 }
 
 .filter-wrap {
@@ -83,10 +85,9 @@
 	display: flex;
 	flex-direction: column;
 	flex: none;
-	max-width: 25%;
-	flex-basis: 25%;
+    flex-basis: 100%;
 	margin-top: 20px;
-	padding: 0 17px;
+	padding: 0 20px;
 	box-sizing: border-box;
 }
 
@@ -131,4 +132,27 @@
 
 .info {
     font-weight: 600;
+}
+
+@media (min-width: 600px) {
+    .tag-box input {
+        margin: 16px 8px 0;
+        border-radius: 20px;
+        padding: 10px 13px;
+        height: 40px;
+    }
+    
+    .filter-bg {
+        margin-top: 40px;
+        margin-bottom: 24px;
+        padding-left: 90px;
+        padding-right: 90px;
+        padding-bottom: 0;
+    }
+    
+    .filter-item {
+        max-width: 25%;
+        flex-basis: 25%;
+        padding: 0 17px;
+    }
 }

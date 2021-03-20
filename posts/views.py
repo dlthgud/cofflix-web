@@ -83,14 +83,15 @@ def main(request):
 
 def rcmd(request):
     num = int(request.GET['num']) - 1
-    cafe = Cafe.objects.annotate(num_tags=Count('tags')).filter(num_tags__gt=1).order_by('-num_tags', 'id')[num: num+1]
-    if cafe:
-        cafe = serialize('json', cafe)
-        cafe = json.loads(cafe)
-        cafe = list(map(lambda cafe: {'id': cafe["pk"], **cafe["fields"]}, cafe))
+    offset = int(request.GET['offset'])
+    cafes = Cafe.objects.annotate(num_tags=Count('tags')).filter(num_tags__gt=1).order_by('-num_tags', 'id')[num: num + offset]
+    if cafes:
+        cafes = serialize('json', cafes)
+        cafes = json.loads(cafes)
+        cafes = list(map(lambda cafe: {'id': cafe["pk"], **cafe["fields"]}, cafes))
         context = {
             'result': True,
-            'cafe': cafe,
+            'cafes': cafes,
         }
     else:
         context = { 'result': False }
@@ -154,7 +155,7 @@ def detail(request, cafe_id):
     try:
         cafe = Cafe.objects.get(id=cafe_id)
 
-        return render(request, 'posts/detail.html', { "cafe": cafe })
+        return render(request, 'posts/m-detail.html', { "cafe": cafe })
 
     except Cafe.DoesNotExist:
         pass
