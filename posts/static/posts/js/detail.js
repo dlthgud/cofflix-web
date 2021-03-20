@@ -5,7 +5,7 @@ $(document).ready(function() {
     imageBtn.on('click', function() {
         if ($(this).hasClass('right')) {
             i++;
-            if (i > 5) {
+            if (i >= 5) {
                 i = 0;
             }
         } else {
