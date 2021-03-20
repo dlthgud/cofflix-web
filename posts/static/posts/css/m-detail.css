@@ -1,0 +1,214 @@
+.intro-wrap {
+    position: relative;
+    width: 100%;
+    margin-top: 48px;
+}
+
+.intro-wrap::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 135px;
+}
+
+.top-contents {
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 20px;
+    width: 100%;
+}
+
+.back a {
+    background: url() top 1px left 0 no-repeat;
+    color: #fff;
+}
+
+.cafe-bg {
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+}
+
+.cafe-bg img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.cafe-bg .image-list {
+    width: 500%;
+    height: 100%;
+}
+
+.cafe-bg .image-list .image-li {
+    float: left;
+    width: 20%;
+    height: 100%;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.image-btn {
+    width: 100%;
+    height: 0;
+}
+
+.image-btn > button {
+    position: absolute;
+    top: 50%;
+    margin-top: -6px;
+    width: 6px;
+    height: 12px;
+    z-index: 3;
+}
+
+.image-btn > button.left {
+    left: 20px;
+}
+
+.image-btn > button.right {
+    right: 20px;
+}
+
+.intro-box {
+    position: absolute;
+    bottom: -130px;
+    padding: 30px 20px;
+    width: 100%;
+}
+
+.cafe-name {
+    margin-bottom: 18px;
+    width: 100%;
+}
+
+.intro-dl dt {
+    width: 100%;
+    font-size: 24px;
+    font-weight: 900;
+    text-align: center;
+    letter-spacing: -2px;
+    line-height: 35.2px;
+}
+
+.intro-dl .intro-table {
+    display: table;
+    width: 100%;
+}
+
+.intro-dl dd {
+    display: table-cell;
+    width: 30%;
+    font-size: 14px;
+    font-weight: 300;
+    letter-spacing: -1px;
+    text-align: center;
+    color: #626974;
+    line-height: 20px;
+}
+
+.cafe-area {
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+
+.cafe-area p {
+    width: 100%;
+    position: relative;
+    display: inline-block;
+    padding: 5px 0 15px 28px;
+    font-size: 14px;
+    color: #101820;
+    letter-spacing: -1px;
+    border-bottom: 1px solid #eceff2;
+    margin-bottom: 10px;
+    line-height: 20px;
+}
+
+.cafe-area p::before {
+    content: '';
+    position: absolute;
+    top: 4px;
+    left: 0;
+    width: 10px;
+    height: 15px;
+    background-repeat: no-repeat;
+    background-image: url();
+    background-size: 100%;
+    background-position: center;
+}
+
+.map-wrap {
+    padding-top: 124px;
+    padding-bottom: 26px;
+    width: 100%;
+}
+
+#map {
+    margin: 0 auto;
+    width: calc(100% - 20px);
+    height: 200px;
+}
+
+.detail-wrap {
+    text-align: left;
+    margin: 0;
+}
+
+.detail-wrap p {
+    width: 100%;
+    position: relative;
+    display: inline-block;
+    padding: 5px 0 15px 28px;
+    font-size: 14px;
+    color: #101820;
+    letter-spacing: -1px;
+    border-bottom: 1px solid #eceff2;
+    margin-bottom: 10px;
+    line-height: 20px;
+}
+
+.detail-wrap p span {
+    display: inline-block;
+    width: 75px;
+}
+
+@media (min-width: 600px) {
+    .cafe-bg {
+        /* height: 490px; */
+    }
+    
+    .cafe-bg .image-list {
+        display: table;
+        width: 100%;
+    }
+    
+    .cafe-bg .image-list .image-li {
+        display: table-cell;
+        margin: 10px;
+        width: calc(20% - 20px);
+        background-color: yellow;
+    }
+    
+    .image-btn button {
+        /* margin-top: -30px;
+        width: 35px;
+        height: 58px; */
+        display: none;
+    }
+    
+    #map {
+        /* height: 490px; */
+        width: 50%;
+    }
+    
+    .detail-wrap {
+        margin: 0 auto;
+        width: 50%;
+    }
+}

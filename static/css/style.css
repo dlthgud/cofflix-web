@@ -49,7 +49,6 @@ li {
 
 #wrap {
 	overflow: hidden;
-	min-width: 1190px;
 }
 
 #footer {
@@ -58,7 +57,7 @@ li {
 }
 
 #footer .footer-inner {
-	width: 1130px;
+	width: 100%;
 	padding: 0 30px 92px;
 	margin: 0 auto;
 	padding-top: 25px;
@@ -67,4 +66,11 @@ li {
 	font-weight: 700;
 	align-items: center;
 	text-align: center;
+}
+
+@media (min-width: 600px) {
+  body {
+    min-width: 1160px;
+    font-weight: 400;
+  }
 }

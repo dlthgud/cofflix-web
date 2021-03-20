@@ -34,7 +34,7 @@ select {
 
 .form-info{
     margin: 0 auto;
-    width: fit-content;
+    width: calc(100% - 35px);
     
 }
 
@@ -42,14 +42,41 @@ select {
     margin: 0 auto;
     padding-top: 10px;
     padding-bottom: 10px;
-    width: 825px;
-    text-align: left;
+    width: calc(100% - 70px);
+    max-width: 825px;
+    text-align: center;
+    font-size: 16px;
+    line-height: 32px;
 }
 
 .form-theme{
     margin: 0 auto;
-    width: 825px;
+    max-width: 825px;
     
+}
+
+.form-theme h2 {
+    margin: 16px 24px;
+    font-size: 16px;
+    line-height: 32px;
+}
+
+.file-group {
+    margin: 0 auto;
+    width: calc(100% - 70px);
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+}
+
+.form-control-file {
+    margin: 8px 0;
+}
+
+.form-theme textarea {
+    display: block;
+    margin: 0 auto;
+    width: calc(100% - 70px);
 }
 
 .form-row{
@@ -65,7 +92,8 @@ select {
 
 .input{
     display: inline-block;
-    width: 325px;
+    width: 100%;
+    max-width: 325px;
     height: 40px;
     
 }
@@ -141,7 +169,8 @@ select {
 }
 
 #sample6_postcode{
-    width: 220px;
+    width: calc(100% - 100px);
+    max-width: 220px;
     height: 40px;
     margin-top: 10px;
 }
@@ -178,7 +207,8 @@ select {
 .btn-signup{
     background: #af6d40;
     color: #fff;
-    width: 330px;
+    width: calc(100% - 70px);
+    max-width: 330px;
     height: 50px;
     display: inline-block;
     text-align: center;
@@ -192,4 +222,27 @@ select {
 
 .open_time p {
     margin-top: 8px;
+}
+
+@media (min-width: 600px) {
+    .form-info {
+        width: fit-content;
+    }
+    
+    .info-text {
+        text-align: left;
+        font-size: 2em;
+    }
+    
+    .form-theme h2 {
+        font-size: 1.5em;
+    }
+    
+    .file-group {
+        flex-direction: row;
+    }
+    
+    .form-control-file {
+        flex-basis: 33.3%;
+    }
 }

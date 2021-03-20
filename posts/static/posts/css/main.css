@@ -1,20 +1,4 @@
 
-/*
-#container {
-	position: relative;
-	width: 1130px;
-	padding: 20px 30px;
-	margin: 0 auto;
-	letter-spacing: -.2px;
-}
-#container:after {
-	content: "";
-	display: table;
-	table-layout: fixed;
-	clear: both;
-}
-*/
-
 .index-bg {
 	background-image: url(https://images.unsplash.com/photo-1553727472-554c565c1d2e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80);
 	background-repeat: no-repeat;
@@ -23,9 +7,8 @@
 	background-position: center;
 	position: relative;
 	overflow: hidden;
-	min-width: 1190px;
 	width: 100%;
-	height: calc(100vh - 70px);
+	height: 334px;
 	display: flex;
 	align-items: stretch;
 	justify-content: center;
@@ -49,6 +32,7 @@
 	left: 50%;
 	transform: translate(-50%, -50%); */
 	width: 338px;
+    padding-left: 16px;
 	/* height: auto; */
 	z-index: 0;
 	display: flex;
@@ -58,11 +42,11 @@
 }
 
 .main-text {
-	font-size: 42px;
+	font-size: 24px;
 	color: #fff;
 	text-align: center;
 	font-weight: 800;
-	line-height: 46px;
+	line-height: 27px;
 	letter-spacing: -0.02em;
 	text-align: start;
 }
@@ -97,9 +81,11 @@
 
 .filter-bg {
 	margin-top: 40px;
-	margin-bottom: 40px;
+	margin-bottom: 10px;
 	padding-left: 40px;
 	padding-right: 40px;
+    padding-bottom: 40px;
+    overflow-x: scroll;
 }
 
 .filter-wrap {
@@ -111,6 +97,7 @@
 	display: flex;
 	flex-wrap: wrap;
     justify-content: center;
+    min-width: 1090px;
 }
 
 .filter-item {
@@ -174,11 +161,8 @@
 }
 
 .rcmd-wrap {
-    margin: auto;
-    padding-top: 100px;
-    margin-left: 50px;
-    margin-right: 50px;
-    padding-bottom: 90px;
+    margin-left: 20px;
+    padding: 0 0 56px;
 }
 
 .rcmd-text {
@@ -188,9 +172,9 @@
 }
 
 .rcmd-text > h2 {
-    font-size: 25px;
-    letter-spacing: -2px;
-    line-height: 1;
+    font-size: 14px;
+    color: #333;
+    word-break: break-all;
 }
 
 .rcmd-content {
@@ -214,17 +198,20 @@
 .cafe-list {
 	display: flex;
 	flex-wrap: wrap;
+    flex-direction: column;
+    padding: 16px 0;
 }
 
 .cafe-item {
-	display: flex;
-	flex-direction: column;
 	flex: none;
-	max-width: 25%;
-	flex-basis: 25%;
-	margin-top: 20px;
+	max-width: 100%;
+	flex-basis: 100%;
 	padding: 0 17px;
 	box-sizing: border-box;
+}
+
+.cafe-item + .cafe-item {
+    margin-top: 8px;
 }
 
 .cafe {
@@ -234,10 +221,17 @@
 	width: 100%;
 }
 
+.cafe-content {
+	display: flex;
+    flex-wrap: wrap;
+	flex-direction: row;
+}
+
 .cafe-img {
-	flex: auto;
-	background-color: #dcdcdf;
-    padding-bottom: 66.6667%;
+    overflow: hidden;
+    width: 112px;
+    height: 63px;
+    margin-right: 12px;
     position: relative;
 }
 
@@ -247,30 +241,37 @@
 	object-fit: cover;
 	height: 100%;
 	width: 100%;
-    position: absolute;
 }
 
 .cafe-text {
-	flex: none;
-	flex-basis: 40px;
-	min-height: 0;
-	margin-top: 10px;
-	white-space: normal;
-	font-size: 13px;
-	line-height: 22px;
-	max-height: 44px;
-	overflow: hidden;
-	text-overflow: ellipsis;
-	color: rgb(34, 34, 34);
-	/* white-space: pre-line; */
+	flex: 1;
+	padding-left: 12px;
+    vertical-align: middle;
+}
+
+.cafe-text .info span {
+    display: block;
+    overflow: hidden;
     font-weight: 400;
+    line-height: 16px;
+    color: rgb(34, 34, 34);
+    text-overflow: ellipsis;
+    white-space: normal;
+}
+
+.cafe-text .etc {
+    margin-top: 8px;
+    font-size: 12px;
+    color: #999;
+    letter-spacing: -1px;
+    line-height: 15px;
 }
 
 .page-btn {
     position: absolute;
-    top: 50%;
-    margin-top: -17.5px;
-    width: 100%;
+    bottom: 0;
+    left: 50%;
+    margin-left: -17.5px;
     height: 0;
 }
 
@@ -513,4 +514,85 @@
     letter-spacing: -1px;
     font-weight: normal;
     margin-left: 35px;
+}
+
+@media (min-width: 600px) {
+    .index-bg {
+        height: calc(100vh - 144px);
+    }
+    
+    .main-text {
+        font-size: 42px;
+        line-height: 46px;
+    }
+    
+    .main-content {
+        padding-left: 0;
+    }
+    
+    .filter-bg {
+        overflow: hidden;
+    }
+    
+    .rcmd-text > h2 {
+        display: block;
+        font-size: 25px;
+        letter-spacing: -2px;
+        line-height: 1;
+    }
+    
+    .rcmd-wrap {
+        margin: auto;
+        padding-top: 60px;
+        margin-left: 50px;
+        margin-right: 50px;
+        padding-bottom: 90px;
+    }
+    
+    .cafe-list {
+        flex-direction: row;
+    }
+    
+    .cafe-item {
+        flex-direction: column;
+        flex: none;
+        max-width: 25%;
+        flex-basis: 25%;
+        margin-top: 20px;
+        padding: 0 17px;
+        box-sizing: border-box;
+    }
+    
+    .cafe-item + .cafe-item {
+        margin-top: 20px;
+    }
+    
+    .cafe-content {
+        display: block;
+    }
+    
+    .cafe-img {
+        flex: auto;
+        width: auto;
+        height: auto;
+        margin-right: 0;
+        background-color: #dcdcdf;
+        padding-bottom: 66.6667%;
+    }
+
+    .cafe-img img {
+        position: absolute;
+    }
+
+    .cafe-text {
+        flex: none;
+        flex-basis: 40px;
+        min-height: 0;
+        padding-left: 0;
+        margin-top: 10px;
+        font-size: 13px;
+        line-height: 22px;
+        max-height: 44px;
+        /* white-space: pre-line; */
+    }
 }

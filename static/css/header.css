@@ -2,11 +2,10 @@
 #header {
 	/* position: relative; */
 	background-color: #fff;
-	/* z-index: 2000; */
-	height: 80px;
+	z-index: 2000;
+	height: 48px;
 	left: 0px;
 	width: 100%;
-	z-index: 100;
 	position: fixed;
 	top: 0px;
 }
@@ -14,25 +13,26 @@
 #header .header-inner {
 	align-items: center;
 	display: flex;
+    flex-direction: row;
 	height: 100%;
 	position: relative;
 	width: 100%;
 	z-index: 1;
 	justify-content: space-between;
 	margin: 0 auto;
-	padding-left: 40px;
-	padding-right: 40px;
+	padding-left: 24px;
+	/* padding-right: 16px; */
 }
 
 #logo {
-	flex: 1 0 140px;
+	flex: 1;
 }
 
 #logo a {
 	outline: none;
 	align-items: center;
 	display: inline-flex;
-	height: 80px;
+	height: 48px;
 	position: relative;
 	vertical-align: middle;
 	z-index: 1;
@@ -234,7 +234,6 @@
     position: fixed;
     top: 72px;
     right: 12px;
-    padding: 24px 27px 19px 28px;
     z-index: 2000;
     width: 279px;
     height: 115px;
@@ -243,14 +242,55 @@
     background-color: #ffffff;
 }
 
-.accounts-links a {
+.accounts-list .accounts-item {
     display: block;
     width: 100%;
     line-height: 160%;
     letter-spacing: -1px;
     font-size: 14px;
+    padding: 20px;
 }
 
-.accounts-links a:nth-child(2) {
+.accounts-list .accounts-item:nth-child(n+2) {
     margin-top: 10px;
+}
+
+.accounts-list .accounts-item:last-child {
+    border-bottom: 1px solid #dee1e4;
+}
+
+.my-name {
+    font-size: 20px;
+    font-weight: bold;
+    letter-spacing: -1px;
+    line-height: 160%;
+}
+
+.my-cafe {
+    padding-bottom: 2px;
+    border-bottom: 1px solid #626974;
+    font-size: 12px;
+    letter-spacing: -1px;
+}
+
+.logout-btn {
+    font-size: 14px;
+    font-weight: 300;
+    color: #626974;
+    letter-spacing: -1px;
+}
+
+@media (min-width: 600px) {
+    #header {
+        height: 80px;
+    }
+    
+    #header .header-inner {
+        padding-left: 40px;
+        padding-right: 40px;
+    }
+    
+    #logo a {
+        height: 80px;
+    }
 }

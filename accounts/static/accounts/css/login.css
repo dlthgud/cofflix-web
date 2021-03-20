@@ -47,8 +47,9 @@ a, a:hover {
 
 .form {
     margin:  0 auto ;
-    min-width: 500px;
+    min-width: 300px;
     max-width: 500px;
+    padding: 0 16px 24px;
 }
 
 .login-btn{
@@ -69,6 +70,11 @@ a, a:hover {
     margin-top: 30px;
     height: 50px;
     background-image: url('/static/accounts/images/2.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-color: #FEE500;
+    border-radius: 12px;
 }
 .kakao-login p {
     text-align: center;
@@ -76,7 +82,7 @@ a, a:hover {
     font-size: large;
 }
 .signup-btn{
-    width: 500px;
+    width: 100%;
     height: 45px;
     border-radius: 12px;
 

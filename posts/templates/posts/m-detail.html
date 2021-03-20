@@ -1,0 +1,129 @@
+{% extends "base.html" %}
+{% load static %}
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/header.css' %}">
+<link rel="stylesheet" href="{% static 'posts/css/m-detail.css' %}">
+{% endblock %}
+{% block script %}
+<script src="{% static 'posts/js/detail.js' %}"></script>
+{% endblock %}
+{% block content %}
+<div id="container">
+    {% block header %}
+    {% include "header.html" %}
+    {% endblock %}
+    {% if cafe %}
+    <div class="intro-wrap">
+        <div class="top-contents">
+            <div class="back">
+                <a href="javascript:history.back();">나가기</a>
+            </div>
+        </div>
+        <div class="cafe-bg">
+            <!-- <img src="{{ cafe.image_set.first.image.url }}" alt="카페 이미지"> -->
+            <ul class="image-list">
+                {% for img in cafe.image_set.all %}
+                <li class="image-li" style="background-image: url({{ img.image.url }})">
+                    <a href="{{ img.image.url }}"></a>
+                </li>
+                {% endfor %}
+            </ul>
+            <div class="image-btn">
+                <button type="button" class="left">
+                    <img src="{% static 'posts/images/arrow_left.svg' %}">
+                </button>
+                <button type="button" class="right">
+                    <img src="{% static 'posts/images/arrow_right.svg' %}">
+                </button>
+            </div>
+        </div>
+        <div class="intro-box">
+            <div class="intro">
+                <div class="cafe-name">
+                    <dl class="intro-dl">
+                        <dt>{{ cafe.name }}</dt>
+                        <div class="intro-table">
+                            <dd>4.5</dd>
+                            <dd>리뷰쓰기</dd>
+                            <dd>가고싶다</dd>
+                        </div>
+                    </dl>
+                </div>
+                <div class="cafe-area">
+                    <p id="cafeAddress">
+                        {{ cafe.address }}
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>    
+    <!-- 지도를 표시할 div -->
+    <div class="map-wrap">
+        <div id='map'></div>
+    </div>
+    <div class="detail-wrap">
+        <p>
+            <span>전화</span>
+            {{ cafe.tel }}
+        </p>
+        <p>
+            <span>카테고리</span>
+            {{ cafe.tags.all|join:" ・ " }}
+        </p>
+        <p>
+            <span>영업시간</span>
+            {{ cafe.open_time }} ~ {{ cafe.close_time }}
+        </p>
+        <p>
+            <span>휴일</span>
+            {{ cafe.holiday }}
+        </p>
+    </div>
+
+    <script type='text/javascript' src='//dapi.kakao.com/v2/maps/sdk.js?appkey=45522189c1ececf745d0f4c8c482b82e&libraries=services'></script>
+    <script>
+        var address = document.getElementById("cafeAddress").innerText;
+        // console.log(address);
+
+        var container = document.getElementById('map');  // 지도를 표시할 div
+        var options = {
+                center: new kakao.maps.LatLng(37.5166119773031, 127.041258693516),  // 지도의 중심좌표
+                level: 3  // 지도 확대 레벨
+        };
+        // 지도를 표시할 div 와 지도 옵션으로 지도 생성
+        var map = new kakao.maps.Map(container, options);
+
+        // 주소-좌표 변환 객체를 생성합니다
+        var geocoder = new kakao.maps.services.Geocoder();
+
+        // 주소로 좌표를 검색합니다
+        geocoder.addressSearch(address, function(result, status) {
+
+            // 정상적으로 검색이 완료됐으면 
+             if (status === kakao.maps.services.Status.OK) {
+
+                var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+                 console.log(coords);
+
+                // 결과값으로 받은 위치를 마커로 표시합니다
+                var marker = new kakao.maps.Marker({
+                    map: map,
+                    position: coords
+                });
+
+                // 인포윈도우로 장소에 대한 설명을 표시합니다
+                var infowindow = new kakao.maps.InfoWindow({
+                    content: '<div style="width:150px;text-align:center;padding:6px 0;">{{ cafe.name }}</div>'
+                });
+                infowindow.open(map, marker);
+
+                // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
+                map.setCenter(coords);
+            } 
+        });
+    </script>
+    {% else %}
+    없음
+    {% endif %}
+</div>
+{% endblock %}
