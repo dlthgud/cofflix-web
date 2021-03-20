@@ -15,14 +15,14 @@
     display: flex;
     justify-content:center;
     align-items:center;
-    position:relative;
+    
+    @media (min-width: 800px) {
+        margin-bottom: 100px;
+    }
 }
 
-.index-bg_text{
-    position: absolute;
-    bottom: 0;
-    left: 20px;
-    z-index:9999;
+.index-bg_text {
+    margin-left: 20px;
 }
 
 .index-bg_text > h2 {
@@ -534,6 +534,14 @@
 @media (min-width: 600px) {
     .index-bg {
         height: calc(100vh - 144px);
+    }
+    
+    .index-bg_text {
+        margin-left: 50px;
+    }
+    
+    .index-bg_text > h2 {
+        font-size: 25px;
     }
     
     .main-text {
