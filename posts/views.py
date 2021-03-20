@@ -108,8 +108,9 @@ def regist(request):
     address = request.POST['address'] + ' ' + request.POST['detailAddress']
     ot = datetime.time(hour=int(request.POST['openTime']))
     ct = datetime.time(hour=int(request.POST['closeTime']))
+    holiday = request.POST['holiday']
     body = request.POST['body']
-    cafe = Cafe(name=name, memo=body, address=address, open_time=ot, close_time=ct, tel=tel)
+    cafe = Cafe(name=name, memo=body, address=address, open_time=ot, close_time=ct, holiday=holiday, tel=tel)
     cafe.save()
 
     if 'image[]' in request.FILES:
