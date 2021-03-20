@@ -30,6 +30,7 @@
     width: 100%;
     height: 200px;
     overflow: hidden;
+    position: relative;
 }
 
 .cafe-bg img {
@@ -55,6 +56,9 @@
 .image-btn {
     width: 100%;
     height: 0;
+    position: absolute;
+    top: 50%;
+    margin-top: -6px;
 }
 
 .image-btn > button {
@@ -75,8 +79,6 @@
 }
 
 .intro-box {
-    position: absolute;
-    bottom: -130px;
     padding: 30px 20px;
     width: 100%;
 }
@@ -144,7 +146,6 @@
 }
 
 .map-wrap {
-    padding-top: 124px;
     padding-bottom: 26px;
     width: 100%;
 }
@@ -192,8 +193,7 @@
         display: table-cell;
         margin: 10px;
         width: calc(20% - 20px);
-        background-color: yellow;
-    }
+=    }
     
     .image-btn button {
         /* margin-top: -30px;
