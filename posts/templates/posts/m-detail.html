@@ -3,9 +3,15 @@
 {% block css %}
 <link rel="stylesheet" href="{% static 'css/header.css' %}">
 <link rel="stylesheet" href="{% static 'posts/css/m-detail.css' %}">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+<link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.css" />
+<link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
 {% endblock %}
 {% block script %}
 <script src="{% static 'posts/js/detail.js' %}"></script>
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+<script src="https://unpkg.com/swiper/swiper-bundle.js"></script>
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 {% endblock %}
 {% block content %}
 <div id="container">
@@ -19,23 +25,24 @@
                 <a href="javascript:history.back();">나가기</a>
             </div>
         </div>
-        <div class="cafe-bg">
-            <!-- <img src="{{ cafe.image_set.first.image.url }}" alt="카페 이미지"> -->
-            <ul class="image-list">
-                {% for img in cafe.image_set.all %}
-                <li class="image-li" style="background-image: url({{ img.image.url }})">
-                    <a href="{{ img.image.url }}"></a>
-                </li>
-                {% endfor %}
-            </ul>
-            <div class="image-btn">
-                <button type="button" class="left">
-                    <img src="{% static 'posts/images/arrow_left.svg' %}">
-                </button>
-                <button type="button" class="right">
-                    <img src="{% static 'posts/images/arrow_right.svg' %}">
-                </button>
-            </div>
+        <!-- Slider main container -->
+        <div class="swiper-container">
+          <!-- Additional required wrapper -->
+          <div class="swiper-wrapper">
+            <!-- Slides -->
+            {% for img in cafe.image_set.all %}
+                <a class="swiper-slide" data-fancybox="gallery" href="{{ img.image.url }}"><img src="{{ img.image.url }}"></a>
+            {% endfor %}
+          </div>
+          <!-- If we need pagination -->
+          <div class="swiper-pagination"></div>
+
+          <!-- If we need navigation buttons -->
+          <!-- <div class="swiper-button-prev"></div>
+          <div class="swiper-button-next"></div> -->
+
+          <!-- If we need scrollbar -->
+          <div class="swiper-scrollbar"></div>
         </div>
         <div class="intro-box">
             <div class="intro">
@@ -59,7 +66,9 @@
     </div>    
     <!-- 지도를 표시할 div -->
     <div class="map-wrap">
-        <div id='map'></div>
+        <a id="mapLink" href="https://map.kakao.com/link/map/37.402056,127.108212" target="_blank">
+            <div id='map'></div>
+        </a>
     </div>
     <div class="detail-wrap">
         <p>
@@ -79,11 +88,39 @@
             {{ cafe.holiday }}
         </p>
     </div>
+    
+    <script type="module">
+      import Swiper from 'https://unpkg.com/swiper/swiper-bundle.esm.browser.min.js'
 
-    <script type='text/javascript' src='//dapi.kakao.com/v2/maps/sdk.js?appkey=45522189c1ececf745d0f4c8c482b82e&libraries=services'></script>
+      const swiper = new Swiper('.swiper-container', {
+          // Optional parameters
+          direction: 'horizontal',
+          loop: true,
+
+          // If we need pagination
+          pagination: {
+            el: '.swiper-pagination',
+          },
+
+          // Navigation arrows
+          navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+          },
+
+          // And if we need scrollbar
+          scrollbar: {
+            el: '.swiper-scrollbar',
+          },
+        });
+    </script>
+
+    <script type='text/javascript' src='//dapi.kakao.com/v2/maps/sdk.js?appkey=a0d20539b358c5001f3cb48bc15ce08b&libraries=services'></script>
     <script>
         var address = document.getElementById("cafeAddress").innerText;
         // console.log(address);
+        
+        var mapLink = document.getElementById('mapLink');
 
         var container = document.getElementById('map');  // 지도를 표시할 div
         var options = {
@@ -92,7 +129,10 @@
         };
         // 지도를 표시할 div 와 지도 옵션으로 지도 생성
         var map = new kakao.maps.Map(container, options);
-
+        
+        map.setZoomable(false);
+        map.setDraggable(false);
+        
         // 주소-좌표 변환 객체를 생성합니다
         var geocoder = new kakao.maps.services.Geocoder();
 
@@ -104,6 +144,8 @@
 
                 var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
                  console.log(coords);
+                 
+                 mapLink.setAttribute('href', 'https://map.kakao.com/link/map/{{ cafe.name }},' + result[0].y + ',' + result[0].x);
 
                 // 결과값으로 받은 위치를 마커로 표시합니다
                 var marker = new kakao.maps.Marker({

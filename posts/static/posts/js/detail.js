@@ -1,4 +1,6 @@
 $(document).ready(function() {
+    $("a.grouped_elements").fancybox();
+
     let i = 0;
 
     var imageBtn = $('.image-btn').children('button');

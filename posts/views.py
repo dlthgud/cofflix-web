@@ -77,6 +77,7 @@ def main(request):
     context = {
         'total': total,
         'cafes': cafes,
+        'tab': 'home',
     }
     return render(request, 'posts/main.html', context)
 
@@ -148,7 +149,7 @@ def lists(request):
         cafes = list(map(lambda cafe: {'id': cafe["pk"], **cafe["fields"]}, cafes))
         return HttpResponse(json.dumps({"cafes": cafes}), content_type="application/json")
 
-    return render(request, 'posts/lists.html', {"cafes": cafes})
+    return render(request, 'posts/lists.html', {"cafes": cafes, 'tab': 'search'})
 
 
 def detail(request, cafe_id):
