@@ -41,18 +41,8 @@
                             </div>
                         </button>
                     </li>
-                    {% if user.is_authenticated %}
-                    <li>
-                        <span class="nav">{{user.username}} 님이 로그인 중</span>
-                    </li>
-                    {% endif %}
                     <li class="nav-item">
                         {% if user.is_authenticated %}
-                        <form action="{% url 'accounts:logout' %}" method="POST">
-                          {% csrf_token %}
-                          <button type="submit" class="btn btn-primary nav">로그아웃</button>
-                        </form>
-                        {% else %}
                         <button class="nav item-box">
                             <div class="ham">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 28 28">
@@ -70,6 +60,28 @@
                                 </svg>
                             </div>
                         </button>
+                        <!-- accounts -->
+                        <div class="accounts-wrap" style="display: none;">
+                            <div class="accounts-list">
+                                <div class="accounts-item">
+                                    <span class="my-name">{{user.username}}</span>
+                                </div>
+                                <div class="accounts-item">
+                                    <a href="#" class="my-cafe">
+                                        카페관리
+                                    </a>
+                                </div>
+                                <form action="{% url 'accounts:logout' %}" method="POST" class="accounts-item">
+                                  {% csrf_token %}
+                                  <button type="submit" class="btn btn-primary logout-btn">로그아웃</button>
+                                </form>
+                            </div>
+                        </div>
+                        <!-- !accounts -->
+                        {% else %}
+                        <a href="{% url 'accounts:login' %}" class="nav">
+                            <span class="nav-text">로그인</span>
+                        </a>
                         {% endif %}
                     </li>
                 </ul>
@@ -78,15 +90,3 @@
     </div>
 </header>
 <!-- !header -->
-<!-- accounts -->
-<div class="accounts-wrap" style="display: none;">
-    <div class="accounts-links">
-        <a href="{% url 'accounts:signup' %}">
-            회원 가입
-        </a>
-        <a href="{% url 'accounts:login' %}">
-            로그인
-        </a>
-    </div>
-</div>
-<!-- !accounts -->
