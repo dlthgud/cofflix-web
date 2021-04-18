@@ -1,0 +1,39 @@
+{% load static %}
+<div class="bottom">
+    <a class="bottom-list" href="/">
+        <div class="bottom-img">
+            {% if tab and tab == 'profile' %}
+            <img src="{% static 'images/profile-on.svg' %}">
+            {% else %}
+            <img src="{% static 'images/profile.svg' %}">
+            {% endif %}
+        </div>
+        <div class="bottom-text">
+            마이페이지
+        </div>
+    </a>
+    <a class="bottom-list" href="/">
+        <div class="bottom-img">
+            {% if tab and tab == 'home' %}
+            <img src="{% static 'images/home-on.svg' %}">
+            {% else %}
+            <img src="{% static 'images/home.svg' %}">
+            {% endif %}
+        </div>
+        <div class="bottom-text">
+            홈
+        </div>
+    </a>
+    <a class="bottom-list" href="/lists">
+        <div class="bottom-img">
+            {% if tab and tab == 'search' %}
+            <img src="{% static 'images/search-on.svg' %}">
+            {% else %}
+            <img src="{% static 'images/search.svg' %}">
+            {% endif %}
+        </div>
+        <div class="bottom-text">
+            카페찾기
+        </div>
+    </a>
+</div>

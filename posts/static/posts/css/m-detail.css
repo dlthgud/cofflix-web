@@ -30,7 +30,21 @@
     width: 100%;
     height: 200px;
     overflow: hidden;
-    position: relative;
+}
+
+.swiper-container {
+  width: 100%;
+  height: 300px;
+}
+
+.swiper-slide {
+  position: relative;
+  width: 200px;
+}
+
+.swiper-slide img {
+    width: 100%;
+    height: 100%;
 }
 
 .cafe-bg img {
@@ -195,7 +209,7 @@
         display: table-cell;
         margin: 10px;
         width: calc(20% - 20px);
-=    }
+    }
     
     .image-btn button {
         /* margin-top: -30px;
