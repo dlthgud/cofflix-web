@@ -31,7 +31,7 @@
           <div class="swiper-wrapper">
             <!-- Slides -->
             {% for img in cafe.image_set.all %}
-                <a class="swiper-slide" data-fancybox="gallery" href="{{ img.image.url }}"><img src="{{ img.image.url }}"></a>
+                <a class="swiper-slide" data-fancybox="images" href="{{ img.image.url }}"><img src="{{ img.image.url }}"></a>
             {% endfor %}
           </div>
           <!-- If we need pagination -->
@@ -93,9 +93,10 @@
       import Swiper from 'https://unpkg.com/swiper/swiper-bundle.esm.browser.min.js'
 
       const swiper = new Swiper('.swiper-container', {
+          slidesPerView: 'auto',
           // Optional parameters
           direction: 'horizontal',
-          loop: true,
+          // loop: true,
 
           // If we need pagination
           pagination: {

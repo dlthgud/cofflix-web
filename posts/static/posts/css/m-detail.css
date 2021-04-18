@@ -196,6 +196,21 @@
 }
 
 @media (min-width: 600px) {
+    .swiper-wrapper .swiper-slide {
+        position: relative;
+        margin-right: 10px;
+        display: inline-block;
+        vertical-align: top;
+        width: 280px;
+        height: 260px;
+        border-radius: 10px;
+        overflow: hidden;
+    }
+    
+    .swiper-wrapper .swiper-slide:last-child {
+        margin-right: 0;
+    }
+    
     .cafe-bg {
         /* height: 490px; */
     }
