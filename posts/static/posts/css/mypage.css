@@ -1,0 +1,62 @@
+.mypage{ 
+    width: 410px; position:absolute; left:50%; top:50%; transform: translate(-50%,-50%);
+    margin-top: 10rem;
+    margin-left: 2rem;;
+}
+
+h1{
+    margin-top: 3rem;
+    margin-bottom: 1.5rem;
+    font-size: 3rem;
+}
+
+.box {
+    margin: 2rem;
+}
+
+.profile{
+    position: relative;
+}
+
+.profile img {
+    width: 5rem;
+    height: 5rem;
+    flex: left;
+
+}
+
+.profile-name {
+    line-height: 5rem;
+    font-size: 3rem;
+    flex: right;
+    display: inline-block;
+}
+
+.box {
+    display: flex;
+}
+
+.mycafe {
+    flex: left;
+    width: 40rem;
+    height: 5rem;
+    padding-top: 2rem;
+    font-size: 1.5rem;
+}
+
+.mypage-icon {
+    width: 3rem;
+    height: 5rem;
+    flex: right;
+    padding-top: 1rem;
+    display: inline-block;
+}
+
+.mypage-icon img {
+    width: 100%;
+}
+
+
+
+
+

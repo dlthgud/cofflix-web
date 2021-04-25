@@ -114,8 +114,13 @@
 }
 
 .intro-dl .intro-table {
-    display: table;
-    width: 100%;
+   
+
+}
+
+.detail-icon img {
+    width: 5rem;
+    height: 5rem;
 }
 
 .intro-dl dd {

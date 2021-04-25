@@ -3,6 +3,8 @@ from django.http import HttpResponse
 from django.core.serializers import serialize
 from django.db.models import Count
 from .models import Cafe, Tag, Image
+from django.views.generic.base import View
+from urllib.parse import urlparse
 import json
 import requests
 import datetime
@@ -170,3 +172,31 @@ def image(request):
     if image:
         image = image.image.url
     return HttpResponse(json.dumps({"image": image}), content_type="application/json")
+
+
+def review(request, cafe_id):
+    return render(request, 'posts/review.html')
+
+def create(request):
+    return redirect('posts:main')
+
+def mypage(request):
+    return render(request, 'posts/mypage.html')
+
+def like(request, cafe_id):
+
+    if request.method == 'POST':
+        try:
+            cafe = Cafe.objects.get(id=cafe_id)
+
+            if request.user in cafe.liked_users.all():
+                cafe.liked_users.remove(request.user)
+            else:
+                cafe.liked_users.add(request.user)
+
+            return redirect('posts:detail', cafe_id=cafe.id)
+
+        except Cafe.DoesNotExists:
+            pass
+
+    return redirect('posts:main')

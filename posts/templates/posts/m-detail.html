@@ -49,11 +49,34 @@
                 <div class="cafe-name">
                     <dl class="intro-dl">
                         <dt>{{ cafe.name }}</dt>
+
                         <div class="intro-table">
-                            <dd>4.5</dd>
-                            <dd>리뷰쓰기</dd>
-                            <dd>가고싶다</dd>
+                            <div class="like-box">
+                                
+                            {% if user.is_authenticated %}
+                                <form action="{% url 'posts:like' cafe.id %}" method="POST">
+                                    {% csrf_token %}
+
+                                    {% if user in cafe.liked_users.all %}
+                                        <button type="submit" class="btn btn-primary">LIKE</button>
+                                    {% else %}
+                                        <button type="submit" class="btn btn-secondary">LIKE</button>
+                                    {% endif %}
+                                </form>
+                            {% endif %}
+
+                                <div>{{ cafe.liked_users.count }}</div>
+
+                                <div class="detail-icon">
+                                    <img src="{% static 'posts/images/icon/talkbubble.png' %}">
+                                </div>   
+                            </div>
+
+                            <div class="detail-icon">
+                                <img src="{% static 'posts/images/icon/tumbler.png' %}">
+                            </div>   
                         </div>
+
                     </dl>
                 </div>
                 <div class="cafe-area">
