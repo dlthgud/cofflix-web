@@ -196,6 +196,9 @@
 }
 
 @media (min-width: 600px) {
+    .swiper-wrapper {
+        padding: 32px;
+    }
     .swiper-wrapper .swiper-slide {
         position: relative;
         margin-right: 10px;
