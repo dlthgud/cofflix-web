@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.core.serializers import serialize
 from django.db.models import Count
+from django.contrib.auth.decorators import login_required
 from .models import Cafe, Tag, Image
 import json
 import requests
@@ -130,8 +131,20 @@ def regist(request):
 
 
 def lists(request):
+
+    page = 1
+    offset = 4
+
+    if 'page' in request.GET.keys():
+        page = int(request.GET['page'])
+
+    if 'offset' in request.GET.keys():
+        offset = int(request.GET['offset'])
+
+    num = (page - 1) * offset
+
     keywords = []
-    # print(request.GET)
+
     if 'keywords[]' in request.GET.keys():
         keywords = request.GET.getlist('keywords[]')
 
@@ -140,14 +153,16 @@ def lists(request):
 
         for keyword in keywords:
             cafes = cafes.filter(tags__name=keyword)
+
+        cafes = cafes.order_by('-id')[num: num + offset]
     else:
-        cafes = Cafe.objects.all()
+        cafes = Cafe.objects.all().order_by('-id')[num: num + offset]
 
     if request.is_ajax():
         cafes = serialize('json', cafes)
         cafes = json.loads(cafes)
         cafes = list(map(lambda cafe: {'id': cafe["pk"], **cafe["fields"]}, cafes))
-        return HttpResponse(json.dumps({"cafes": cafes}), content_type="application/json")
+        return HttpResponse(json.dumps({"cafes": cafes, "user": request.user.pk}), content_type="application/json")
 
     return render(request, 'posts/lists.html', {"cafes": cafes, 'tab': 'search'})
 
@@ -166,7 +181,63 @@ def detail(request, cafe_id):
 
 def image(request):
     cafe = request.GET['cafe']
-    image = Image.objects.filter(cafe=cafe).first()
-    if image:
-        image = image.image.url
-    return HttpResponse(json.dumps({"image": image}), content_type="application/json")
+    images = Image.objects.filter(cafe=cafe)
+    if images:
+        imageurls = []
+        for image in images:
+            imageurls.append(image.image.url)
+    return HttpResponse(json.dumps({"images": imageurls}), content_type="application/json")
+
+
+def review(request, cafe_id):
+    return render(request, 'posts/review.html')
+
+def create(request):
+    return redirect('posts:main')
+
+def mypage(request):
+    return render(request, 'posts/mypage.html', {'tab': 'profile'})
+
+@login_required
+def like(request, cafe_id):
+
+    try:
+        cafe = Cafe.objects.get(id=cafe_id)
+
+        if request.user in cafe.liked_users.all():
+            cafe.liked_users.remove(request.user)
+        else:
+            cafe.liked_users.add(request.user)
+            
+        if 'next' in request.GET.keys():
+            next = request.GET['next']
+            return redirect(next)
+
+        return redirect('posts:detail', cafe_id=cafe.id)
+
+    except Cafe.DoesNotExists:
+        pass
+
+    return redirect('posts:main')
+
+@login_required
+def mark(request, cafe_id):
+
+    try:
+        cafe = Cafe.objects.get(id=cafe_id)
+
+        if request.user in cafe.marked_users.all():
+            cafe.marked_users.remove(request.user)
+        else:
+            cafe.marked_users.add(request.user)
+
+        if 'next' in request.GET.keys():
+            next = request.GET['next']
+            return redirect(next)
+
+        return redirect('posts:detail', cafe_id=cafe.id)
+
+    except Cafe.DoesNotExist:
+        pass
+
+    return redirect('posts:main')

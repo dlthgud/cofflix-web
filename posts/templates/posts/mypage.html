@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% load static %}
+{% load socialaccount %}
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/header.css' %}">
+    <link rel="stylesheet" href="{% static 'posts/css/mypage.css' %}">
+{% endblock %}
+{% block content %}
+    
+    {% block header %}
+    {% include "header.html" %}
+    {% endblock %}
+
+    {% csrf_token %}
+    <div class="mypage-wrap">
+        <section class="mypage">
+            <div class="profile">
+                <img src="{% static 'posts/images/icon/user.png' %}">
+            <div class="profile-name">{{user.username}}님</div>
+            </div>
+            <hr>
+
+            <h1>내 정보</h1>
+            <hr>
+            <div class="subtitle">
+                <div class="box">
+                    <div class="mycafe">가고싶은 카페</div>
+                    <div class="mypage-icon">
+                        <img src="{% static 'posts/images/icon/hotcoffee.png' %}"></div>   
+                    </div>
+                <div class="box">
+                    <div class="mycafe">리뷰남긴 카페</div>
+                    <div class="mypage-icon">
+                        <img src="{% static 'posts/images/icon/hotcoffee.png' %}">
+                    </div>
+                    </div>
+                <div class="box">
+                    <div class="mycafe">설정</div>
+                    <div class="mypage-icon">
+                        <img src="{% static 'posts/images/icon/settings.png' %}">
+                    </div>
+                </div>
+            </div>
+        </section>    
+    </div>
+
+{% endblock %}

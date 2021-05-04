@@ -3,6 +3,11 @@
 {% block css %}
 <link rel="stylesheet" href="{% static 'css/header.css' %}">
 <link rel="stylesheet" href="{% static 'posts/css/lists.css' %}">
+<!-- Link Swiper's CSS -->
+<link
+  rel="stylesheet"
+  href="https://unpkg.com/swiper/swiper-bundle.min.css"
+/>
 {% endblock %}
 {% block script %}
 <script src="{% static 'posts/js/lists.js' %}"></script>
@@ -46,13 +51,42 @@
                     <a href="{% url 'posts:detail' cafe.id %}" class="filter">
                         <div class="filter-content">
                             <div class="filter-img">
-                                {% if cafe.image_set.first %}
+                                <!-- Swiper -->
+                                <div class="swiper-container">
+                                  <div class="swiper-wrapper">
+                                    {% for img in cafe.image_set.all %}
+                                      <div class="swiper-slide">
+                                          <img src="{{ img.image.url }}">
+                                      </div>
+                                    {% endfor %}
+                                  </div>
+                                </div>
+                                <!-- {% if cafe.image_set.first %}
                                 <img src="{{ cafe.image_set.first.image.url }}">
                                 {% else %}
                                 <img src="{% static 'posts/images/logo-2.png' %}">
-                                {% endif %}
+                                {% endif %} -->
                             </div>
                             <div class="filter-text">
+                                {% if user.is_authenticated %}
+                                    <div class="btn-wrap" data-cafe="{{ cafe.id }}">
+                                        <span class="action-btn like-btn">
+                                            {% if user in cafe.liked_users.all %}
+                                                <img src="{% static 'posts/images/icon/liked.png' %}">
+                                            {% else %}
+                                                <img src="{% static 'posts/images/icon/like.png' %}">
+                                            {% endif %}
+                                        </span>
+                                        
+                                        <span class="action-btn btn mark-btn">
+                                            {% if user in cafe.marked_users.all %}
+                                                <img src="{% static 'posts/images/icon/marked.png' %}">
+                                            {% else %}
+                                                <img src="{% static 'posts/images/icon/mark.png' %}">
+                                            {% endif %}
+                                        </span>
+                                    </div>
+                                {% endif %}
                                 <div class="info">
                                     <span>{{ cafe.name }}</span>
                                 </div>
@@ -67,7 +101,68 @@
             </ul>
         </section>
     </div>
+    
+    <!-- Swiper JS -->
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    
+    <!-- Initialize Swiper -->
+    <script>
+      var swiper = new Swiper(".swiper-container", {
+          slidesPerView: 'auto',
+          // Optional parameters
+          direction: 'horizontal',
+          // loop: true,
+
+      });
+    </script>
+    
     {% endif %}
     <!-- !filter -->
 </div>
+
+<li class="filter-item template">
+    <a href="" class="filter">
+        <div class="filter-content">
+            <div class="filter-img">
+                <!-- Swiper -->
+                <div class="swiper-container">
+                  <div class="swiper-wrapper">
+                    {% for img in cafe.image_set.all %}
+                      <div class="swiper-slide">
+                          <img src="{{ img.image.url }}">
+                      </div>
+                    {% endfor %}
+                  </div>
+                </div>
+            </div>
+            <div class="filter-text">
+                {% if user.is_authenticated %}
+                    <div class="btn-wrap">
+                        <span class="action-btn like-btn">
+                            {% if user in cafe.liked_users.all %}
+                                <img src="{% static 'posts/images/icon/liked.png' %}">
+                            {% else %}
+                                <img src="{% static 'posts/images/icon/like.png' %}">
+                            {% endif %}
+                        </span>
+
+                        <span class="action-btn btn mark-btn">
+                            {% if user in cafe.marked_users.all %}
+                                <img src="{% static 'posts/images/icon/marked.png' %}">
+                            {% else %}
+                                <img src="{% static 'posts/images/icon/mark.png' %}">
+                            {% endif %}
+                        </span>
+                    </div>
+                {% endif %}
+                <div class="info">
+                    <span>{{ cafe.name }}</span>
+                </div>
+                <div class="etc">
+                    {{ cafe.address }}
+                </div>
+            </div>
+        </div>
+    </a>
+</li>
 {% endblock %}

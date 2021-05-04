@@ -26,6 +26,9 @@ button, input, textarea {
     margin: 0;
     background: transparent;
     outline: none;
+    appearance: none;
+    -moz-appearance: none;
+    -webkit-appearance: none;
 }
 button {
     cursor: pointer;
