@@ -113,9 +113,46 @@
     line-height: 35.2px;
 }
 
-.intro-dl .intro-table {
-    display: table;
-    width: 100%;
+.like-box {
+   display: flex;
+
+}
+
+.btn-like, .btn-reply, ,.btn-bookmark{
+    flex: none;
+}
+
+.btn-bookmark{
+    margin-left: auto;
+}
+
+.btn-like img {
+    border: 1px solid red;
+    width: 4.5rem;
+    height: 4.5rem;
+    box-sizing: border-box;
+    padding
+}
+
+.btn-reply img {
+    border: 1px solid green;
+    width: 4.5rem;
+    height: 4.5rem;
+    box-sizing: border-box;
+}
+
+.btn-bookmark img {
+    border: 1px solid blue;
+    width: 5rem;
+    height: 5rem;
+    margin-left: auto;
+    box-sizing: border-box;
+}
+
+.like-number{
+    font-size: 1.5rem;
+    font-weight: 700;
+
 }
 
 .intro-dl dd {
@@ -196,6 +233,24 @@
 }
 
 @media (min-width: 600px) {
+    .swiper-wrapper {
+        padding: 32px;
+    }
+    .swiper-wrapper .swiper-slide {
+        position: relative;
+        margin-right: 10px;
+        display: inline-block;
+        vertical-align: top;
+        width: 280px;
+        height: 260px;
+        border-radius: 10px;
+        overflow: hidden;
+    }
+    
+    .swiper-wrapper .swiper-slide:last-child {
+        margin-right: 0;
+    }
+    
     .cafe-bg {
         /* height: 490px; */
     }
@@ -227,4 +282,12 @@
         margin: 0 auto;
         width: 50%;
     }
+}
+
+
+
+/* ----좋아요--- */
+
+.btn btn-primary {
+
 }

@@ -31,7 +31,7 @@
           <div class="swiper-wrapper">
             <!-- Slides -->
             {% for img in cafe.image_set.all %}
-                <a class="swiper-slide" data-fancybox="gallery" href="{{ img.image.url }}"><img src="{{ img.image.url }}"></a>
+                <a class="swiper-slide" data-fancybox="images" href="{{ img.image.url }}"><img src="{{ img.image.url }}"></a>
             {% endfor %}
           </div>
           <!-- If we need pagination -->
@@ -42,17 +42,60 @@
           <div class="swiper-button-next"></div> -->
 
           <!-- If we need scrollbar -->
-          <div class="swiper-scrollbar"></div>
+          <!-- <div class="swiper-scrollbar"></div> -->
         </div>
         <div class="intro-box">
             <div class="intro">
                 <div class="cafe-name">
                     <dl class="intro-dl">
                         <dt>{{ cafe.name }}</dt>
+
                         <div class="intro-table">
-                            <dd>4.5</dd>
-                            <dd>리뷰쓰기</dd>
-                            <dd>가고싶다</dd>
+                            <div class="like-box">
+                                
+                                {% if user.is_authenticated %}
+                                    <form action="{% url 'posts:like' cafe.id %}" method="POST">
+                                        {% csrf_token %}
+
+                                        {% if user in cafe.liked_users.all %}
+                                            <button type="submit" class="btn-like">
+                                                <img src="{% static 'posts/images/icon/liked.png' %}">
+                                            </button>
+                                        {% else %}
+                                            <button type="submit" class="btn-like">
+                                                <img src="{% static 'posts/images/icon/like.png' %}">
+                                            </button>
+                                        {% endif %}
+                                    </form>
+                                {% endif %}
+
+
+                                <div class="btn-reply">
+                                    <img src="{% static 'posts/images/icon/talkbubble.png' %}">
+                                </div>   
+                            
+                            
+                                <div class="btn-bookmark">
+
+                                    {% if user.is_authenticated %}
+                                        <form action="{% url 'posts:mark' cafe.id %}" method="POST">
+                                            {% csrf_token %}
+
+                                            {% if user in cafe.marked_users.all %}
+                                                <button type="submit" class="btn-like">
+                                                    <img src="{% static 'posts/images/icon/marked.png' %}">
+                                                </button>
+                                            {% else %}
+                                                <button type="submit" class="btn-like">
+                                                    <img src="{% static 'posts/images/icon/mark.png' %}">
+                                                </button>
+                                            {% endif %}
+                                        </form>
+                                     {% endif %}
+                                </div>   
+                            </div>
+
+                            <div> <a class="like-number">가보고싶어요</a> {{ cafe.liked_users.count }} <a class="like-number">개</a></div>
                         </div>
                     </dl>
                 </div>
@@ -93,9 +136,10 @@
       import Swiper from 'https://unpkg.com/swiper/swiper-bundle.esm.browser.min.js'
 
       const swiper = new Swiper('.swiper-container', {
+          slidesPerView: 'auto',
           // Optional parameters
           direction: 'horizontal',
-          loop: true,
+          // loop: true,
 
           // If we need pagination
           pagination: {

@@ -1,6 +1,8 @@
 {% load static %}
+{% load socialaccount %}
 <div class="bottom">
-    <a class="bottom-list" href="/">
+    {% if user.is_authenticated %}
+    <a class="bottom-list" href="{% url 'posts:mypage' %}">
         <div class="bottom-img">
             {% if tab and tab == 'profile' %}
             <img src="{% static 'images/profile-on.svg' %}">
@@ -12,7 +14,17 @@
             마이페이지
         </div>
     </a>
-    <a class="bottom-list" href="/">
+    {% else %}
+    <a class="bottom-list" href="{% url 'accounts:login' %}">
+        <div class="bottom-img">
+            <img src="{% static 'images/profile.svg' %}">
+        </div>
+        <div class="bottom-text">
+            마이페이지
+        </div>
+    </a>
+    {% endif %}
+    <a class="bottom-list" href="{% url 'posts:main' %}">
         <div class="bottom-img">
             {% if tab and tab == 'home' %}
             <img src="{% static 'images/home-on.svg' %}">
@@ -24,7 +36,7 @@
             홈
         </div>
     </a>
-    <a class="bottom-list" href="/lists">
+    <a class="bottom-list" href="{% url 'posts:lists' %}">
         <div class="bottom-img">
             {% if tab and tab == 'search' %}
             <img src="{% static 'images/search-on.svg' %}">
