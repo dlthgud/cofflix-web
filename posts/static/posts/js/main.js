@@ -24,7 +24,7 @@ function drawCafeItem(num = 0, offset = 4) {
                                 str += '<img id="' + cafe['id'] + '" src="/static/posts/images/logo-2.png">';
                                 $.ajax({
                                     url: "/image",
-                                    data: { "cafe": cafe['id'] },
+                                    data: { "cafe": cafe['id'], "main": true },
                                     type: 'get',
                                     dataType: 'json',
                                     success: function(data) {

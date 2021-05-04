@@ -183,6 +183,13 @@ def detail(request, cafe_id):
 
 def image(request):
     cafe = request.GET['cafe']
+    
+    if 'main' in request.GET.keys():
+        image = Image.objects.filter(cafe=cafe).first()
+        if image:
+            imageurl = image.image.url
+        return HttpResponse(json.dumps({"image": imageurl}), content_type="application/json")
+    
     images = Image.objects.filter(cafe=cafe)
     if images:
         imageurls = []
