@@ -4,6 +4,8 @@ from django.core.serializers import serialize
 from django.db.models import Count
 from django.contrib.auth.decorators import login_required
 from .models import Cafe, Tag, Image
+from django.views.generic.base import View
+from urllib.parse import urlparse
 import json
 import requests
 import datetime
@@ -215,7 +217,7 @@ def like(request, cafe_id):
 
         return redirect('posts:detail', cafe_id=cafe.id)
 
-    except Cafe.DoesNotExists:
+    except Cafe.DoesNotExist:
         pass
 
     return redirect('posts:main')
