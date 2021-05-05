@@ -102,6 +102,7 @@ $(document).ready(function() {
                                     slide += '</div>';
                                     $('#' + cafe['id']).append(slide);
                                 });
+                                initSwiper();
                             } else {
                                 let slide = '<div class="swiper-slide">';
                                     slide += '<img src="/static/posts/images/logo-2.png">';
@@ -127,3 +128,15 @@ $(document).ready(function() {
         });
     }
 });
+
+
+function initSwiper() {
+    var swiper = new Swiper(".swiper-container", {
+          slidesPerView: 'auto',
+          // Optional parameters
+          direction: 'horizontal',
+          // loop: true,
+          lazyLoading: true,
+
+      });
+}
