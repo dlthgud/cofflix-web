@@ -207,6 +207,16 @@ def create(request):
 def mypage(request):
     return render(request, 'posts/mypage.html', {'tab': 'profile'})
 
+def marked_cafe(request):
+    return render(request, 'posts/mypage/markedcafe.html')
+
+def mysetting(request):
+    return render(request, 'posts/mypage/mysetting.html')
+
+def version(request):
+    return render(request, 'posts/mypage/version.html')
+
+
 @login_required
 def like(request, cafe_id):
 

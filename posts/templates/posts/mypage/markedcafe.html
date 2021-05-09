@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% load static %}
+{% load socialaccount %}
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/header.css' %}">
+    <link rel="stylesheet" href="{% static 'posts/css/markedcafe.css' %}">
+{% endblock %}
+{% block content %}
+    
+    {% block header %}
+    {% include "header.html" %}
+    {% endblock %}
+
+    {% csrf_token %}
+    <section class="markedcafe">
+        <div class="profile">
+            <img src="{% static 'posts/images/icon/user.png' %}">
+            <div class="profile-name">{{user.username}}님</div>
+        </div>
+        <hr>
+        
+        <h1>가고싶은 카페</h1>
+        <hr>
+        
+
+    </section>
+
+{% endblock %}

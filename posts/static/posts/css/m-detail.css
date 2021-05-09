@@ -114,11 +114,11 @@
 }
 
 .like-box {
-   display: flex;
-
+    display: flex;
+    margin-bottom: 1rem;
 }
 
-.btn-like, .btn-reply, ,.btn-bookmark{
+.btn-like, .btn-reply, .btn-bookmark{
     flex: none;
 }
 
@@ -127,32 +127,25 @@
 }
 
 .btn-like img {
-    border: 1px solid red;
     width: 4.5rem;
     height: 4.5rem;
-    box-sizing: border-box;
-    padding
+    margin-right: 1rem;
 }
 
 .btn-reply img {
-    border: 1px solid green;
-    width: 4.5rem;
+    width: 3.5rem;
     height: 4.5rem;
-    box-sizing: border-box;
 }
 
 .btn-bookmark img {
-    border: 1px solid blue;
-    width: 5rem;
+    width: 4rem;
     height: 5rem;
     margin-left: auto;
-    box-sizing: border-box;
 }
 
 .like-number{
     font-size: 1.5rem;
     font-weight: 700;
-
 }
 
 .intro-dl dd {
@@ -251,9 +244,6 @@
         margin-right: 0;
     }
     
-    .cafe-bg {
-        /* height: 490px; */
-    }
     
     .cafe-bg .image-list {
         display: table;
@@ -288,6 +278,3 @@
 
 /* ----좋아요--- */
 
-.btn btn-primary {
-
-}

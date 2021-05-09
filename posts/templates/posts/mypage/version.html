@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% load static %}
+{% load socialaccount %}
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/header.css' %}">
+    <link rel="stylesheet" href="{% static 'posts/css/version.css' %}">
+{% endblock %}
+{% block content %}
+    
+    {% block header %}
+    {% include "header.html" %}
+    {% endblock %}
+
+    {% csrf_token %}
+    <section class="version">
+        
+        <h1>버전정보</h1>
+        <hr>
+        
+        <h2>최신 버전을 사용중입니다</h2>
+     
+
+    </section>
+
+{% endblock %}

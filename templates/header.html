@@ -30,7 +30,12 @@
             <div class="gnb-inner">
                 <ul class="list-nav">
                     <li class="nav-item">
+
+                        {% if user.is_authenticated %}
                         <a href="{% url 'posts:host' %}" class="nav">
+                        {% else %}
+                        <a href="{% url 'accounts:login' %}" class="nav">
+                        {% endif %}
                             <span class="nav-text">업체등록하기</span>
                         </a>
                     </li>

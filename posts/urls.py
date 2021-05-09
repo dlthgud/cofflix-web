@@ -17,5 +17,8 @@ urlpatterns = [
     path('mypage/', views.mypage, name='mypage'),
     path('like/<int:cafe_id>/',views.like, name='like'),
     path('mark/<int:cafe_id>/',views.mark, name="mark"),
+    path('mypage/markedcafe/', views.marked_cafe, name='markedcafe'),
+    path('mypage/mysetting/', views.mysetting, name='mysetting'),
+    path('mypage/version/', views.version, name='version'),
 ]
 

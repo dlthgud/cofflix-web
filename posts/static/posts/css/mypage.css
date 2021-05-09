@@ -35,29 +35,23 @@ h1{
 .profile-name {
     line-height: 5rem;
     font-size: 3rem;
-    flex: right;
-    display: inline-block;
-}
-
-.box {
-    display: flex;
+    flex: none;
+    margin-left: 10%;
 }
 
 .mycafe {
-    flex: left;
-    width: 40rem;
+    flex: none;
     height: 5rem;
     padding-top: 2rem;
     font-size: 1.5rem;
-    max-width: calc(100% - 70px);
 }
 
 .mypage-icon {
+    flex: none;
     width: 3rem;
     height: 5rem;
-    flex: right;
     padding-top: 1rem;
-    display: inline-block;
+    margin-left: auto;
 }
 
 .mypage-icon img {
