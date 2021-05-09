@@ -168,8 +168,9 @@ def lists(request):
 
     return render(request, 'posts/lists.html', {"cafes": cafes, 'tab': 'search'})
 
-
 def detail(request, cafe_id):
+    if not request.user.is_authenticated:
+        return redirect('accounts:login')
     try:
         cafe = Cafe.objects.get(id=cafe_id)
 
