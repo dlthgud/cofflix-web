@@ -115,6 +115,9 @@
 
 .like-box {
     display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
     margin-bottom: 1rem;
 }
 
@@ -127,19 +130,19 @@
 }
 
 .btn-like img {
-    width: 4.5rem;
-    height: 4.5rem;
+    width: 2.5rem;
+    height: 2.5rem;
     margin-right: 1rem;
 }
 
 .btn-reply img {
-    width: 3.5rem;
-    height: 4.5rem;
+    width: 2.5rem;
+    height: 2.5rem;
 }
 
 .btn-bookmark img {
-    width: 4rem;
-    height: 5rem;
+    width: 2.5rem;
+    height: 2.5rem;
     margin-left: auto;
 }
 
@@ -277,4 +280,17 @@
 
 
 /* ----좋아요--- */
+
+.swiper-pagination.cafe-img-list {
+    flex: 1;
+}
+
+.swiper-pagination.cafe-img-list .swiper-pagination-bullet {
+    margin-right: 0.3rem;
+}
+
+.swiper-pagination.cafe-img-list .swiper-pagination-bullet:last-child {
+    margin-right: 0;
+} 
+
 
