@@ -8,7 +8,8 @@
     max-width: 100%;
     width: 410px; position:absolute; left:50%; top:50%; transform: translate(-50%,-50%);
     margin-top: 80px;
-    margin-left: 2rem;;
+    margin-left: 2rem;
+    clear: both;
 }
 
 h1{
@@ -19,10 +20,12 @@ h1{
 
 .box {
     margin: 2rem;
+    display: flex;
 }
 
 .profile{
     position: relative;
+    display: flex;
 }
 
 .profile img {
