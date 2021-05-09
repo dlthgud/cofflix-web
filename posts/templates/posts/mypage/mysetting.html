@@ -3,7 +3,7 @@
 {% load socialaccount %}
 {% block css %}
     <link rel="stylesheet" href="{% static 'css/header.css' %}">
-    <link rel="stylesheet" href="{% static 'posts/css/mysetting.css' %}">
+    <link rel="stylesheet" href="{% static 'posts/css/mypage.css' %}">
 {% endblock %}
 {% block content %}
     
@@ -12,7 +12,9 @@
     {% endblock %}
 
     {% csrf_token %}
-    <section class="mysetting">
+    <div class="mypage-wrap">
+
+    <section class="mypage">
         
         <h1>설정</h1>
         <hr>
@@ -42,5 +44,6 @@
      
 
     </section>
+    </div>
 
 {% endblock %}

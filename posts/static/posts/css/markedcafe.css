@@ -1,7 +1,13 @@
+.mypage-wrap {
+    position: relative;
+    width: 100%;
+    min-height: calc(100vh - 150px);
+}
+
 .markedcafe{ 
-    width: 410px; position:absolute; left:50%; top:50%; transform: translate(-50%,-50%);
-    margin-top: 10rem;
-    margin-left: 2rem;
+    max-width: 100%;
+    width: 410px; position:absolute; left:50%; top:20rem; transform: translate(-50%,-50%);
+    padding: 2rem;
     clear: both;
 }
 

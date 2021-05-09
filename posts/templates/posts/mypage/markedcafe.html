@@ -12,6 +12,9 @@
     {% endblock %}
 
     {% csrf_token %}
+    
+    <div class="mypage-wrap">
+
     <section class="markedcafe">
         <div class="profile">
             <img src="{% static 'posts/images/icon/user.png' %}">
@@ -24,5 +27,6 @@
         
 
     </section>
+    </div>
 
 {% endblock %}
