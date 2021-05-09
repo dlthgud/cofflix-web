@@ -4,6 +4,16 @@
 {% block css %}
     <link rel="stylesheet" href="{% static 'css/header.css' %}">
     <link rel="stylesheet" href="{% static 'posts/css/markedcafe.css' %}">
+    <link rel="stylesheet" href="{% static 'posts/css/lists.css' %}">
+    <!-- Link Swiper's CSS -->
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/swiper/swiper-bundle.min.css"
+    />
+
+{% endblock %}
+{% block script %}
+<script src="{% static 'posts/js/mark.js' %}"></script>
 {% endblock %}
 {% block content %}
     
@@ -11,7 +21,6 @@
     {% include "header.html" %}
     {% endblock %}
 
-    {% csrf_token %}
     
     <div class="mypage-wrap">
 
@@ -24,6 +33,101 @@
         
         <h1>가고싶은 카페</h1>
         <hr>
+        
+        <!-- list -->
+        {% if cafes %}
+        <div class="filter-bg">
+            <section class="filter-wrap">
+                <ul class="filter-list">
+                    {% for cafe in cafes %}
+                    <li class="filter-item">
+                        <a href="{% url 'posts:detail' cafe.id %}" class="filter">
+                            <div class="filter-content">
+                                <div class="filter-img">
+                                    <!-- Swiper -->
+                                    <div class="swiper-container">
+                                      <div class="swiper-wrapper">
+                                        {% for img in cafe.image_set.all %}
+                                          <div class="swiper-slide">
+                                              <img src="{{ img.image.url }}">
+                                          </div>
+                                        {% endfor %}
+                                      </div>
+                                    </div>
+                                    <!-- {% if cafe.image_set.first %}
+                                    <img src="{{ cafe.image_set.first.image.url }}">
+                                    {% else %}
+                                    <img src="{% static 'posts/images/logo-2.png' %}">
+                                    {% endif %} -->
+                                </div>
+                                <div class="filter-text">
+                                    {% if user.is_authenticated %}
+                                        <div class="btn-wrap" data-cafe="{{ cafe.id }}">
+                                            <span class="action-btn like-btn">
+                                                {% if user in cafe.liked_users.all %}
+                                                    <img src="{% static 'posts/images/icon/liked.png' %}">
+                                                {% else %}
+                                                    <img src="{% static 'posts/images/icon/like.png' %}">
+                                                {% endif %}
+                                            </span>
+                                            
+                                            
+                                          <!-- If we need pagination -->
+                                          <div class="swiper-pagination cafe-img-list"></div>
+
+                                            <span class="action-btn btn mark-btn">
+                                                {% if user in cafe.marked_users.all %}
+                                                    <img src="{% static 'posts/images/icon/marked.png' %}">
+                                                {% else %}
+                                                    <img src="{% static 'posts/images/icon/mark.png' %}">
+                                                {% endif %}
+                                            </span>
+                                        </div>
+                                    {% endif %}
+                                    <div class="info">
+                                        <span>{{ cafe.name }}</span>
+                                    </div>
+                                    <div class="etc">
+                                        {{ cafe.address }}
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </section>
+        </div>
+
+        <!-- Swiper JS -->
+        <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+        <!-- Initialize Swiper -->
+        <script>
+          var swiper = new Swiper(".swiper-container", {
+              slidesPerView: 'auto',
+              // Optional parameters
+              direction: 'horizontal',
+              // loop: true,
+              
+              // If we need pagination
+              pagination: {
+                el: '.swiper-pagination',
+              },
+
+          });
+        </script>
+        
+        {% else %}
+        <div class="empty-list">
+            <p class="empty-text">
+                가고싶은 카페를 저장해보세요.
+            </p>
+            <a href="{% url 'posts:lists' %}" class="cafe-btn">카페 둘러보기</a>
+        </div>
+
+        {% endif %}
+        <!-- !list -->
         
 
     </section>

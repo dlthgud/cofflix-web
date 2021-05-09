@@ -1,12 +1,13 @@
 .mypage-wrap {
     position: relative;
     width: 100%;
-    min-height: calc(100vh - 150px);
+    min-height: calc(100vh - 210px);
+    margin-top: 48px;
 }
 
 .markedcafe{ 
     max-width: 100%;
-    width: 410px; position:absolute; left:50%; top:20rem; transform: translate(-50%,-50%);
+    /* width: 410px; position:absolute; left:50%; top:20rem; transform: translate(-50%,-50%); */
     padding: 2rem;
     clear: both;
 }
@@ -57,4 +58,48 @@ h1{
     border: 1px solid green;
     box-sizing: border-box;
     flex: auto;
+}
+
+
+.empty-list {
+    height: 82px;
+    padding: 16px 0 30px 0;
+    margin-top: 30px;
+    margin-bottom: 7px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.empty-list .empty-text {
+    font-size: 15px;
+    line-height: 18px;
+    color: #676767;
+}
+
+.empty-list .cafe-btn {
+    font-size: 14px;
+    line-height: 40px;
+    float: left;
+    width: 260px;
+    height: 40px;
+    margin: 12px 0 0 0;
+    border-radius: 6px;
+    background-color: #f5ead6;
+    font-weight: 700;
+    text-align: center;
+    color: #6f573c;
+}
+
+.swiper-pagination.cafe-img-list {
+    position: static;
+}
+
+.swiper-pagination.cafe-img-list .swiper-pagination-bullet {
+    margin-right: 0.2rem;
+}
+
+.swiper-pagination.cafe-img-list .swiper-pagination-bullet:last-child {
+    margin-right: 0;
 }

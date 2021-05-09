@@ -208,7 +208,10 @@ def mypage(request):
     return render(request, 'posts/mypage.html', {'tab': 'profile'})
 
 def marked_cafe(request):
-    return render(request, 'posts/mypage/markedcafe.html')
+    # cafes = []
+    cafes = request.user.marked_cafe.all()
+    
+    return render(request, 'posts/mypage/markedcafe.html', { "cafes": cafes })
 
 def mysetting(request):
     return render(request, 'posts/mypage/mysetting.html')
