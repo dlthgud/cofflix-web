@@ -1,0 +1,79 @@
+{% load static %}
+{% load socialaccount %}
+{% providers_media_js %}
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'accounts/css/login.css' %}">
+    <script src="{% static 'accounts/js/login.js' %}"></script>
+
+    <title>Cofflix</title>
+
+   
+
+</head>
+<body>
+    <div class="top">
+        <div class="logo_image">
+            <a href="/">
+                <img src="{% static 'accounts/images/logo2.png' %}">
+            </a>
+        </div>
+    </div>
+    {% if error %}
+        <div class="alert alert-danger" role="alert">
+            {{ error }}
+        </div>
+        {% endif %}
+    <form id="loginForm" name="loginForm" class="form" autocomplete="off" action="{% url 'accounts:login' %}" method="POST" onsubmit="loginSubmit();">
+        {% csrf_token %}
+        <div class="center">
+            <h1 class="title">로그인 및 회원가입</h1>
+        <hr>
+        <h5 class="desc">로그인을 통해 COFFLIX의 다양한 혜택을 누리세요.</h5>
+        </div>
+        <hr>
+            <div class="form-group">
+                <label for="username">ID</label>
+                <input type="text" class="form-control" id="username" name="username" aria-describedby="emailHelp" placeholder="아이디 입력" >
+                
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" class="form-control" id="password" name="password" placeholder="비밀번호 입력">
+            </div>
+            <div class="form-group form-check check">
+                <input name="isSave" type="checkbox" class="form-check-input" id="exampleCheck1">
+                <label class="form-check-label" for="exampleCheck1">아이디 저장하기</label>
+                
+            </div>
+            
+            <button type="submit" class="btn btn-light btn-lg btn-block login-btn">로그인</button>
+            
+           
+            <P class="guide">아직 COFFLIX의 회원이 아니신가요?</P> 
+                <button onclick="location.href='/signup'" type="button" class="btn btn-outline-dark signup-btn">회원가입</button>
+
+        
+            <hr>
+           
+            <div class="kakao-login">
+                <p>
+                    <a href="{% provider_login_url 'kakao' %}">카카오톡으로 로그인</a>
+                </p>
+            </div>
+
+           
+            
+
+        
+        
+        
+        </form>
+</body>
+</html>

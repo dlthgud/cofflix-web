@@ -18,7 +18,7 @@ body, button, input, select, table, textarea {
 	color: #202020;
 	font-family: Arial, Helvetica, sans-serif;
 }
-button, input {
+button, input, textarea {
 	border-radius: 0;
 	border: 0;
     text-indent: 0;
@@ -26,6 +26,9 @@ button, input {
     margin: 0;
     background: transparent;
     outline: none;
+    appearance: none;
+    -moz-appearance: none;
+    -webkit-appearance: none;
 }
 button {
     cursor: pointer;
@@ -33,6 +36,9 @@ button {
 a, a:hover, a:focus {
 	color: inherit;
 	text-decoration: none;
+}
+li {
+    list-style: none;
 }
 
 .blind {
@@ -46,16 +52,16 @@ a, a:hover, a:focus {
 
 #wrap {
 	overflow: hidden;
-	min-width: 1190px;
 }
 
 #footer {
 	background-color: #fafbfc;
 	border-top: 1px solid #e4e8eb;
+	
 }
 
 #footer .footer-inner {
-	width: 1130px;
+	width: 100%;
 	padding: 0 30px 92px;
 	margin: 0 auto;
 	padding-top: 25px;
@@ -64,4 +70,11 @@ a, a:hover, a:focus {
 	font-weight: 700;
 	align-items: center;
 	text-align: center;
+}
+
+@media (min-width: 600px) {
+  body {
+    min-width: 1160px;
+    font-weight: 400;
+  }
 }

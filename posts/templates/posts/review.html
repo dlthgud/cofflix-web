@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% load static %}
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/header.css' %}">
+    <link rel="stylesheet" href="{% static 'posts/css/review.css' %}" type="text/css" />
+{% endblock %}
+{% block script %}
+    <script src="{% static 'posts/js/host.js' %}"></script>
+{% endblock %}
+{% block header %}
+{% include "header.html" %}
+{% endblock %}
+{% block content %}
+
+{% if user.is_authenticated %}
+<form action="{% url 'posts:create' %}" method="POST">
+    {% csrf_token %}
+    <h1>리뷰 작성하기</h1>
+    <h2>작 성 자</h2>
+    <input type="text" value = {{user.get_username}}>
+    <h2>리 뷰 작 성</h2>
+    <textarea cols=40 rows=10 name="body"></textarea>
+    <div class="btn-wrap">
+        <button class="btn-signup" data-log-action="Cmplt/Cmplt"
+            type="button">등록하기</button>
+    </div>
+    
+
+</form>
+{% endif %}  
+{% endblock %}

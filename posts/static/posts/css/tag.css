@@ -1,19 +1,24 @@
 /* tag */
 
 .tag-wrap {
-    display: flex;
+    display: block;
     justify-content: center;
     align-items: center;
+    max-width: 625px;
+    margin: 0 auto;
 }
 
 .tag-box {
     display: flex;
-    height: 70px;
+    flex-wrap: wrap;
+    min-height: 70px;
     padding-left: 8px;
+    justify-content: space-around;
+    align-content: space-around;
 }
 
 .tag-box input {
-    flex: 0 1 auto;
+    flex: 0 1 40%;
     max-width: 300px;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -34,4 +39,10 @@
     font-weight: bold;
     background-color: #af6d40;
     color: #fff;
+}
+
+@media (min-width: 600px) {
+    .tag-box input {
+        flex-basis: 20%;
+    }
 }

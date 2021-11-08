@@ -29,16 +29,10 @@
             </div>
         </div>
     </div>
-	<div class="index-bg">
-		<article class="main-wrap">
-			<div class="main-content">
-				<div class="main-text">
-					<span>취향 선택을 통한
-						카페 추천 서비스</span>
-				</div>
-			</div>
-		</article>
-	</div>
+	<div class="index-bg"></div>
+    <div class="index-bg_text">
+        <h2>취향 선택을 통한 카페 추천 서비스</h2>
+    </div>
 	<div class="filter-bg">
 		<section class="filter-wrap">
 			<ul class="filter-list">
@@ -46,10 +40,10 @@
 					<a href="javascript: void(0)" class="filter">
 						<div class="filter-content">
 							<div class="filter-img">
-								<img src="https://media-cdn.tripadvisor.com/media/photo-s/10/e5/73/92/photo1jpg.jpg">
+								<img src="{% static 'posts/images/category/roasting.jpg' %}">
 							</div>
 							<div class="filter-text">
-								<span>테라스</span>
+								<span>직접로스팅하는</span>
 							</div>
 						</div>
 					</a>
@@ -58,10 +52,10 @@
 					<a href="javascript: void(0)" class="filter">
 						<div class="filter-content">
 							<div class="filter-img">
-								<img src="https://media-cdn.tripadvisor.com/media/photo-s/10/e5/73/92/photo1jpg.jpg">
+								<img src="{% static 'posts/images/category/dessert.jpg' %}">
 							</div>
 							<div class="filter-text">
-								<span>주차가능</span>
+								<span>디저트가맛있는</span>
 							</div>
 						</div>
 					</a>
@@ -70,10 +64,10 @@
 					<a href="javascript: void(0)" class="filter">
 						<div class="filter-content">
 							<div class="filter-img">
-								<img src="https://media-cdn.tripadvisor.com/media/photo-s/10/e5/73/92/photo1jpg.jpg">
+								<img src="{% static 'posts/images/category/late.jpg' %}">
 							</div>
 							<div class="filter-text">
-								<span>애완동물동반</span>
+								<span>늦게문닫는</span>
 							</div>
 						</div>
 					</a>
@@ -82,10 +76,10 @@
 					<a href="javascript: void(0)" class="filter">
 						<div class="filter-content">
 							<div class="filter-img">
-								<img src="https://media-cdn.tripadvisor.com/media/photo-s/10/e5/73/92/photo1jpg.jpg">
+								<img src="{% static 'posts/images/category/work.jpg' %}">
 							</div>
 							<div class="filter-text">
-								<span>1인카페</span>
+								<span>작업하기좋은</span>
 							</div>
 						</div>
 					</a>
@@ -94,10 +88,10 @@
 					<a href="javascript: void(0)" class="filter">
 						<div class="filter-content">
 							<div class="filter-img">
-								<img src="https://media-cdn.tripadvisor.com/media/photo-s/10/e5/73/92/photo1jpg.jpg">
+								<img src="{% static 'posts/images/category/pet.jpg' %}">
 							</div>
 							<div class="filter-text">
-								<span>소파가편한</span>
+								<span>반려동물동반</span>
 							</div>
 						</div>
 					</a>
@@ -106,10 +100,10 @@
 					<a href="javascript: void(0)" class="filter">
 						<div class="filter-content">
 							<div class="filter-img">
-								<img src="https://media-cdn.tripadvisor.com/media/photo-s/10/e5/73/92/photo1jpg.jpg">
+								<img src="{% static 'posts/images/category/brunch.jpg' %}">
 							</div>
 							<div class="filter-text">
-								<span>산미가 나는 원두</span>
+								<span>브런치카페</span>
 							</div>
 						</div>
 					</a>
@@ -118,10 +112,22 @@
 					<a href="javascript: void(0)" class="filter">
 						<div class="filter-content">
 							<div class="filter-img">
-								<img src="https://media-cdn.tripadvisor.com/media/photo-s/10/e5/73/92/photo1jpg.jpg">
+								<img src="{% static 'posts/images/category/terrace.jpg' %}">
 							</div>
 							<div class="filter-text">
-								<span>디카페인</span>
+								<span>테라스가있는</span>
+							</div>
+						</div>
+					</a>
+				</li>
+                <li class="filter-item">
+					<a href="javascript: void(0)" class="filter">
+						<div class="filter-content">
+							<div class="filter-img">
+								<img src="{% static 'posts/images/category/parking.jpg' %}">
+							</div>
+							<div class="filter-text">
+								<span>주차가능한</span>
 							</div>
 						</div>
 					</a>
@@ -129,7 +135,58 @@
 			</ul>
 		</section>
 	</div>
-	<div class="activity-bg">
+    {% if cafes %}
+    <div class="rcmd-bg">
+        <div class="rcmd-wrap">
+            <div class="rcmd-text">
+                <h2>
+                    {% if user.is_authenticated %}
+                    {{ user.get_username }}님께
+                    {% else %}
+                    COFFLIX가
+                    {% endif %}
+                    추천하는 카페
+                </h2>
+            </div>
+            <div class="rcmd-content">
+                <div class="page-btn">
+                    <button type="button" class="prev-btn">
+                        <img src="{% static 'posts/images/arrow_left.svg' %}">
+                    </button>
+                    <button type="button" class="next-btn">
+                        <img src="{% static 'posts/images/arrow_right.svg' %}">
+                    </button>
+                </div>
+                <ul class="cafe-list">
+                    {% for cafe in cafes %}
+                    <li class="cafe-item">
+                        <a href="{% url 'posts:detail' cafe.id %}" class="cafe">
+                            <div class="cafe-content">
+                                <div class="cafe-img">
+                                    {% if cafe.image_set.first %}
+                                    <img src="{{ cafe.image_set.first.image.url }}">
+                                    {% else %}
+                                    <img src="{% static 'posts/images/logo-2.png' %}">
+                                    {% endif %}
+                                </div>
+                                <div class="cafe-text">
+                                    <div class="info">
+                                        <span>{{ cafe.name }}</span>
+                                    </div>
+                                    <div class="etc">
+                                        {{ cafe.address }}
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+	<div class="activity-bg" style="display: none;">
 		<section class="activity-wrap">
 			<div class="activity-intro">
 				<div class="intro-text">

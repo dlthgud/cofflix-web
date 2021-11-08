@@ -2,11 +2,16 @@
 {% load static %}
 {% block css %}
 <link rel="stylesheet" href="{% static 'css/header.css' %}">
-<link rel="stylesheet" href="{% static 'posts/css/main.css' %}">
 <link rel="stylesheet" href="{% static 'posts/css/lists.css' %}">
+<!-- Link Swiper's CSS -->
+<link
+  rel="stylesheet"
+  href="https://unpkg.com/swiper/swiper-bundle.min.css"
+/>
 {% endblock %}
 {% block script %}
 <script src="{% static 'posts/js/lists.js' %}"></script>
+<script src="{% static 'posts/js/mark.js' %}"></script>
 {% endblock %}
 {% block header %}
 {% include "header.html" %}
@@ -21,13 +26,14 @@
         <section class="tag-wrap">
             <form id="tag-form" method="get" action="" class="tag-form">
                 <div class="tag-box">
-                    <input type="button" name="tag" value="테라스">
-                    <input type="button" name="tag" value="주차가능">
-                    <input type="button" name="tag" value="애완동물동반">
-                    <input type="button" name="tag" value="1인카페">
-                    <input type="button" name="tag" value="소파가편한">
-                    <input type="button" name="tag" value="산미가 나는 원두">
-                    <input type="button" name="tag" value="디카페인">
+                    <input type="button" name="tag" value="직접로스팅하는">
+                    <input type="button" name="tag" value="디저트가맛있는">
+                    <input type="button" name="tag" value="늦게문닫는">
+                    <input type="button" name="tag" value="작업하기좋은">
+                    <input type="button" name="tag" value="반려동물동반">
+                    <input type="button" name="tag" value="브런치카페">
+                    <input type="button" name="tag" value="테라스가있는">
+                    <input type="button" name="tag" value="주차가능한">
                 </div>
             </form>
         </section>
@@ -43,17 +49,50 @@
             <ul class="filter-list">
                 {% for cafe in cafes %}
                 <li class="filter-item">
-                    <a href="" class="filter">
+                    <a href="{% url 'posts:detail' cafe.id %}" class="filter">
                         <div class="filter-content">
                             <div class="filter-img">
-                                <img src="{{ cafe.img }}">
+                                <!-- Swiper -->
+                                <div class="swiper-container">
+                                  <div class="swiper-wrapper">
+                                    {% for img in cafe.image_set.all %}
+                                      <div class="swiper-slide">
+                                          <img src="{{ img.image.url }}">
+                                      </div>
+                                    {% endfor %}
+                                  </div>
+                                </div>
+                                <!-- {% if cafe.image_set.first %}
+                                <img src="{{ cafe.image_set.first.image.url }}">
+                                {% else %}
+                                <img src="{% static 'posts/images/logo-2.png' %}">
+                                {% endif %} -->
                             </div>
                             <div class="filter-text">
+                                {% if user.is_authenticated %}
+                                    <div class="btn-wrap" data-cafe="{{ cafe.id }}">
+                                        <span class="action-btn like-btn">
+                                            {% if user in cafe.liked_users.all %}
+                                                <img src="{% static 'posts/images/icon/liked.png' %}">
+                                            {% else %}
+                                                <img src="{% static 'posts/images/icon/like.png' %}">
+                                            {% endif %}
+                                        </span>
+                                        
+                                        <span class="action-btn btn mark-btn">
+                                            {% if user in cafe.marked_users.all %}
+                                                <img src="{% static 'posts/images/icon/marked.png' %}">
+                                            {% else %}
+                                                <img src="{% static 'posts/images/icon/mark.png' %}">
+                                            {% endif %}
+                                        </span>
+                                    </div>
+                                {% endif %}
                                 <div class="info">
                                     <span>{{ cafe.name }}</span>
                                 </div>
                                 <div class="etc">
-                                    {{ cafe.desc }}
+                                    {{ cafe.address }}
                                 </div>
                             </div>
                         </div>
@@ -63,7 +102,68 @@
             </ul>
         </section>
     </div>
+    
+    <!-- Swiper JS -->
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    
+    <!-- Initialize Swiper -->
+    <script>
+      var swiper = new Swiper(".swiper-container", {
+          slidesPerView: 'auto',
+          // Optional parameters
+          direction: 'horizontal',
+          // loop: true,
+
+      });
+    </script>
+    
     {% endif %}
     <!-- !filter -->
 </div>
+
+<li class="filter-item template">
+    <a href="" class="filter">
+        <div class="filter-content">
+            <div class="filter-img">
+                <!-- Swiper -->
+                <div class="swiper-container">
+                  <div class="swiper-wrapper">
+                    {% for img in cafe.image_set.all %}
+                      <div class="swiper-slide">
+                          <img src="{{ img.image.url }}">
+                      </div>
+                    {% endfor %}
+                  </div>
+                </div>
+            </div>
+            <div class="filter-text">
+                {% if user.is_authenticated %}
+                    <div class="btn-wrap">
+                        <span class="action-btn like-btn">
+                            {% if user in cafe.liked_users.all %}
+                                <img src="{% static 'posts/images/icon/liked.png' %}">
+                            {% else %}
+                                <img src="{% static 'posts/images/icon/like.png' %}">
+                            {% endif %}
+                        </span>
+
+                        <span class="action-btn btn mark-btn">
+                            {% if user in cafe.marked_users.all %}
+                                <img src="{% static 'posts/images/icon/marked.png' %}">
+                            {% else %}
+                                <img src="{% static 'posts/images/icon/mark.png' %}">
+                            {% endif %}
+                        </span>
+                    </div>
+                {% endif %}
+                <div class="info">
+                    <span>{{ cafe.name }}</span>
+                </div>
+                <div class="etc">
+                    {{ cafe.address }}
+                </div>
+            </div>
+        </div>
+    </a>
+</li>
 {% endblock %}

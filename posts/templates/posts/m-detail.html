@@ -1,0 +1,210 @@
+{% extends "base.html" %}
+{% load static %}
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/header.css' %}">
+<link rel="stylesheet" href="{% static 'posts/css/m-detail.css' %}">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+<link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.css" />
+<link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+{% endblock %}
+{% block script %}
+<script src="{% static 'posts/js/detail.js' %}"></script>
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+<script src="https://unpkg.com/swiper/swiper-bundle.js"></script>
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+{% endblock %}
+{% block content %}
+<div id="container">
+    {% block header %}
+    {% include "header.html" %}
+    {% endblock %}
+    {% if cafe %}
+    <div class="intro-wrap">
+        <div class="top-contents">
+            <div class="back">
+                <a href="javascript:history.back();">나가기</a>
+            </div>
+        </div>
+        <!-- Slider main container -->
+        <div class="swiper-container">
+          <!-- Additional required wrapper -->
+          <div class="swiper-wrapper">
+            <!-- Slides -->
+            {% for img in cafe.image_set.all %}
+                <a class="swiper-slide" data-fancybox="images" href="{{ img.image.url }}"><img src="{{ img.image.url }}"></a>
+            {% endfor %}
+          </div>
+        </div>
+        <div class="intro-box">
+            <div class="intro">
+                <div class="cafe-name">
+                    <dl class="intro-dl">
+
+                        <div class="intro-table">
+                            <div class="like-box">
+                                
+                                {% if user.is_authenticated %}
+                                    <form action="{% url 'posts:like' cafe.id %}" method="POST">
+                                        {% csrf_token %}
+
+                                        {% if user in cafe.liked_users.all %}
+                                            <button type="submit" class="btn-like">
+                                                <img src="{% static 'posts/images/icon/liked.png' %}">
+                                            </button>
+                                        {% else %}
+                                            <button type="submit" class="btn-like">
+                                                <img src="{% static 'posts/images/icon/like.png' %}">
+                                            </button>
+                                        {% endif %}
+                                    </form>
+                                {% endif %}
+
+
+                                <div class="btn-reply">
+                                    <img src="{% static 'posts/images/icon/talkbubble.png' %}">
+                                </div>   
+                                
+                                
+                              <!-- If we need pagination -->
+                              <div class="swiper-pagination cafe-img-list"></div>
+                            
+                            
+                                <div class="btn-bookmark">
+
+                                    {% if user.is_authenticated %}
+                                        <form action="{% url 'posts:mark' cafe.id %}" method="POST">
+                                            {% csrf_token %}
+
+                                            {% if user in cafe.marked_users.all %}
+                                                <button type="submit" class="btn-like">
+                                                    <img src="{% static 'posts/images/icon/marked.png' %}">
+                                                </button>
+                                            {% else %}
+                                                <button type="submit" class="btn-like">
+                                                    <img src="{% static 'posts/images/icon/mark.png' %}">
+                                                </button>
+                                            {% endif %}
+                                        </form>
+                                     {% endif %}
+                                </div>   
+                            </div>
+
+                            <div> <a class="like-number">가보고싶어요</a> {{ cafe.liked_users.count }} <a class="like-number">개</a></div>
+
+                        </div>
+                        <dt>{{ cafe.name }}</dt>
+                    </dl>
+                </div>
+                <div class="cafe-area">
+                    <p id="cafeAddress">
+                        {{ cafe.address }}
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>    
+    <!-- 지도를 표시할 div -->
+    <div class="map-wrap">
+        <a id="mapLink" href="https://map.kakao.com/link/map/37.402056,127.108212" target="_blank">
+            <div id='map'></div>
+        </a>
+    </div>
+    <div class="detail-wrap">
+        <p>
+            <span>전화</span>
+            {{ cafe.tel }}
+        </p>
+        <p>
+            <span>카테고리</span>
+            {{ cafe.tags.all|join:" ・ " }}
+        </p>
+        <p>
+            <span>영업시간</span>
+            {{ cafe.open_time }} ~ {{ cafe.close_time }}
+        </p>
+        <p>
+            <span>휴일</span>
+            {{ cafe.holiday }}
+        </p>
+    </div>
+    
+    <script type="module">
+      import Swiper from 'https://unpkg.com/swiper/swiper-bundle.esm.browser.min.js'
+
+      const swiper = new Swiper('.swiper-container', {
+          slidesPerView: 'auto',
+          // Optional parameters
+          direction: 'horizontal',
+          // loop: true,
+
+          // If we need pagination
+          pagination: {
+            el: '.swiper-pagination',
+          },
+
+          // Navigation arrows
+          navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+          },
+
+          // And if we need scrollbar
+          scrollbar: {
+            el: '.swiper-scrollbar',
+          },
+        });
+    </script>
+
+    <script type='text/javascript' src='//dapi.kakao.com/v2/maps/sdk.js?appkey=a0d20539b358c5001f3cb48bc15ce08b&libraries=services'></script>
+    <script>
+        var address = document.getElementById("cafeAddress").innerText;
+        // console.log(address);
+        
+        var mapLink = document.getElementById('mapLink');
+        var container = document.getElementById('map');  // 지도를 표시할 div
+        var options = {
+                center: new kakao.maps.LatLng(37.5166119773031, 127.041258693516),  // 지도의 중심좌표
+                level: 3  // 지도 확대 레벨
+        };
+        // 지도를 표시할 div 와 지도 옵션으로 지도 생성
+        var map = new kakao.maps.Map(container, options);
+        
+        map.setZoomable(false);
+        map.setDraggable(false);
+        
+        // 주소-좌표 변환 객체를 생성합니다
+        var geocoder = new kakao.maps.services.Geocoder();
+
+        // 주소로 좌표를 검색합니다
+        geocoder.addressSearch(address, function(result, status) {
+
+            // 정상적으로 검색이 완료됐으면 
+             if (status === kakao.maps.services.Status.OK) {
+
+                var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+                 console.log(coords);
+                 
+                 mapLink.setAttribute('href', 'https://map.kakao.com/link/map/{{ cafe.name }},' + result[0].y + ',' + result[0].x);
+
+                // 결과값으로 받은 위치를 마커로 표시합니다
+                var marker = new kakao.maps.Marker({
+                    map: map,
+                    position: coords
+                });
+
+                // 인포윈도우로 장소에 대한 설명을 표시합니다
+                var infowindow = new kakao.maps.InfoWindow({
+                    content: '<div style="width:150px;text-align:center;padding:6px 0;">{{ cafe.name }}</div>'
+                });
+                infowindow.open(map, marker);
+
+                // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
+                map.setCenter(coords);
+            } 
+        });
+    </script>
+    {% else %}
+    없음
+    {% endif %}
+</div>
+{% endblock %}

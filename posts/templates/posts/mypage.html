@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+{% load static %}
+{% load socialaccount %}
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/header.css' %}">
+    <link rel="stylesheet" href="{% static 'posts/css/mypage.css' %}">
+{% endblock %}
+{% block content %}
+    
+    {% block header %}
+    {% include "header.html" %}
+    {% endblock %}
+
+    {% csrf_token %}
+    {% if user.is_authenticated %}
+
+    <div class="mypage-wrap">
+
+        <section class="mypage">
+            <div class="profile">
+                <img src="{% static 'posts/images/icon/user.png' %}">
+                <div class="profile-name">{{user.username}}님</div>
+            </div>
+            <hr>
+            
+            <h1>내 정보</h1>
+            <hr>
+            
+            <div>
+                <div class="box">
+                    <div class="mycafe">가고싶은 카페</div>
+                        <a href="{% url 'posts:markedcafe' %}" class="mypage-icon">
+                        <img src="{% static 'posts/images/icon/marked.png' %}">
+                        </a>
+                </div>   
+                
+                <div class="box">
+                    <div class="mycafe">리뷰남긴 카페</div>
+                        <button type="button" class="mypage-icon">
+                        <img src="{% static 'posts/images/icon/hotcoffee.png' %}">
+                        </button>
+                </div>
+                
+                <div class="box">
+                    <div class="mycafe">설정</div>
+                        <a href="{% url 'posts:mysetting' %}" class="mypage-icon">
+                        <img src="{% static 'posts/images/icon/settings.png' %}">
+                        </a>
+                </div>
+            </div>    
+
+        </section>
+    </div>
+
+    {% else%}
+    <script type="text/javascript">
+        alert('먼저 로그인을 해주세요.');
+        window.location.href = "{% url 'accounts:login' %}";
+    </script>
+
+    {% endif %}
+{% endblock %}

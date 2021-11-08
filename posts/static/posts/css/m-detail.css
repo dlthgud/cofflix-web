@@ -1,0 +1,297 @@
+.intro-wrap {
+    position: relative;
+    width: 100%;
+    margin-top: 48px;
+}
+
+.intro-wrap::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 135px;
+}
+
+.top-contents {
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 20px;
+    width: 100%;
+}
+
+.back a {
+    background: url() top 1px left 0 no-repeat;
+    color: #fff;
+}
+
+.cafe-bg {
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+}
+
+.swiper-container {
+  width: 100%;
+  height: 300px;
+}
+
+.swiper-slide {
+  position: relative;
+  width: 200px;
+}
+
+.swiper-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.cafe-bg img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.cafe-bg .image-list {
+    width: 500%;
+    height: 100%;
+}
+
+.cafe-bg .image-list .image-li {
+    float: left;
+    width: 20%;
+    height: 100%;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.image-btn {
+    width: 100%;
+    height: 0;
+    position: absolute;
+    top: 50%;
+    margin-top: -6px;
+}
+
+.image-btn > button {
+    position: absolute;
+    top: 50%;
+    margin-top: -6px;
+    width: 24px;
+    height: 24px;
+    border-radius: 100%;
+    background-color: #fff;
+    z-index: 3;
+}
+
+.image-btn > button.left {
+    left: 20px;
+}
+
+.image-btn > button.right {
+    right: 20px;
+}
+
+.intro-box {
+    padding: 30px 20px;
+    width: 100%;
+}
+
+.cafe-name {
+    margin-bottom: 18px;
+    width: 100%;
+}
+
+.intro-dl dt {
+    width: 100%;
+    font-size: 24px;
+    font-weight: 900;
+    text-align: center;
+    letter-spacing: -2px;
+    line-height: 35.2px;
+}
+
+.like-box {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+}
+
+.btn-like, .btn-reply, .btn-bookmark{
+    flex: none;
+}
+
+.btn-bookmark{
+    margin-left: auto;
+}
+
+.btn-like img {
+    width: 2.5rem;
+    height: 2.5rem;
+    margin-right: 1rem;
+}
+
+.btn-reply img {
+    width: 2.5rem;
+    height: 2.5rem;
+}
+
+.btn-bookmark img {
+    width: 2.5rem;
+    height: 2.5rem;
+    margin-left: auto;
+}
+
+.like-number{
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.intro-dl dd {
+    display: table-cell;
+    width: 30%;
+    font-size: 14px;
+    font-weight: 300;
+    letter-spacing: -1px;
+    text-align: center;
+    color: #626974;
+    line-height: 20px;
+}
+
+.cafe-area {
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+
+.cafe-area p {
+    width: 100%;
+    position: relative;
+    display: inline-block;
+    padding: 5px 0 15px 28px;
+    font-size: 14px;
+    color: #101820;
+    letter-spacing: -1px;
+    border-bottom: 1px solid #eceff2;
+    margin-bottom: 10px;
+    line-height: 20px;
+}
+
+.cafe-area p::before {
+    content: '';
+    position: absolute;
+    top: 4px;
+    left: 0;
+    width: 10px;
+    height: 15px;
+    background-repeat: no-repeat;
+    background-image: url();
+    background-size: 100%;
+    background-position: center;
+}
+
+.map-wrap {
+    padding-bottom: 26px;
+    width: 100%;
+}
+
+#map {
+    margin: 0 auto;
+    width: calc(100% - 20px);
+    height: 200px;
+}
+
+.detail-wrap {
+    text-align: left;
+    margin: 0;
+}
+
+.detail-wrap p {
+    width: 100%;
+    position: relative;
+    display: inline-block;
+    padding: 5px 0 15px 28px;
+    font-size: 14px;
+    color: #101820;
+    letter-spacing: -1px;
+    border-bottom: 1px solid #eceff2;
+    margin-bottom: 10px;
+    line-height: 20px;
+}
+
+.detail-wrap p span {
+    display: inline-block;
+    width: 75px;
+}
+
+@media (min-width: 600px) {
+    .swiper-wrapper {
+        padding: 32px;
+    }
+    .swiper-wrapper .swiper-slide {
+        position: relative;
+        margin-right: 10px;
+        display: inline-block;
+        vertical-align: top;
+        width: 280px;
+        height: 260px;
+        border-radius: 10px;
+        overflow: hidden;
+    }
+    
+    .swiper-wrapper .swiper-slide:last-child {
+        margin-right: 0;
+    }
+    
+    
+    .cafe-bg .image-list {
+        display: table;
+        width: 100%;
+    }
+    
+    .cafe-bg .image-list .image-li {
+        display: table-cell;
+        margin: 10px;
+        width: calc(20% - 20px);
+    }
+    
+    .image-btn button {
+        /* margin-top: -30px;
+        width: 35px;
+        height: 58px; */
+        display: none;
+    }
+    
+    #map {
+        /* height: 490px; */
+        width: 50%;
+    }
+    
+    .detail-wrap {
+        margin: 0 auto;
+        width: 50%;
+    }
+}
+
+
+
+/* ----좋아요--- */
+
+.swiper-pagination.cafe-img-list {
+    flex: 1;
+}
+
+.swiper-pagination.cafe-img-list .swiper-pagination-bullet {
+    margin-right: 0.3rem;
+}
+
+.swiper-pagination.cafe-img-list .swiper-pagination-bullet:last-child {
+    margin-right: 0;
+} 
+
+

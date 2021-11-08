@@ -1,0 +1,705 @@
+/* Start Container_1 */
+.container_img_control {
+    display: flex;
+    margin-left: 10px;
+}
+
+.container_img_bg {
+    background-image: url(/static/posts/images/dummy/1.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    width: 380px;
+    height: 340px;
+    margin-right: 10px;
+}
+
+/* End Container_1 */
+
+/* Start Container_2 */
+
+.container_2 {
+    position: relative;
+    display: block;
+    width: 800px;
+    left: 50px;
+}
+
+.container_2_control {
+    display: flex
+}
+
+.container_2_mainfont {
+    display: flex;
+    font-size: 28.8px;
+    font-weight: 500;
+    position: relative;
+    left: 130px;
+    top: 100px;
+}
+
+.container_2_mainnumber {
+    margin-left: 13px;
+    color: #ff792a;
+}
+
+.container_2_review_img {
+    display: flex;
+}
+
+.container_2_review_icon {
+    position: relative;
+    left: 600px;
+    top: 140px;
+    margin-right: 10px;
+}
+
+.container_2_icon_control {
+    display: flex;
+}
+
+
+.container_2_icon_pencil {
+    background: url(/static/posts/images/icon/pencil.png) no-repeat;
+    background-size: cover;
+    opacity: 70%;
+    margin-right: 32px;
+    width: 30px;
+    height: 30px;
+    position: relative;
+    left: 473px;
+    top: 100px;
+}
+
+.container_2_icon_star {
+    background: url(/static/posts/images/icon/star.png) no-repeat;
+    background-size: cover;
+    opacity: 70%;
+    width: 30px;
+    height: 30px;
+    position: relative;
+    left: 479px;
+    top: 100px;
+}
+
+.container_2_icon_control2 {
+    position: relative;
+    top: 170px;
+    right: 360px;
+}
+
+.container_2_icon_move {
+    display: flex;
+}
+
+.container_2_icon_eye {
+    margin-right: 50px;
+}
+
+.container_2_icon_pencil_2 {
+    margin-right: 50px;
+}
+
+.container_2_icon_star_2 {
+    margin-right: 50px;
+}
+
+/* End container_2 */
+
+/* Table Start */
+.container_2_bottomline {
+    position: relative;
+    top: 170px;
+    left: 182px;
+    width: 860px;
+    border-bottom: 1px solid rgb(199, 199, 199);
+}
+
+/* Address */
+.main_table_control {
+    position: relative;
+    top: 200px;
+    left: 180px;
+}
+
+.informaiton_address-1 {
+    color: #4f4f4f;
+}
+
+.informaiton_address_control-1 {
+    display: block;
+}
+
+.informaiton_address_font-1 {
+    position: relative;
+    left: 80px
+}
+
+
+.informaiton_address_1-1 {
+    border-radius: 2px;
+    border: solid 1px gray;
+    margin-left: 120px;
+    font-size: 12px;
+    color: #7f7f7f;
+    padding: 0 5px;
+}
+
+.informaiton_address_2-1 {
+    line-height: 1.8;
+}
+
+/* telephone */
+.main_table_control_2 {
+    position: relative;
+    top: 220px;
+    left: 180px;
+}
+
+.informaiton_telephone-2 {
+    color: #4f4f4f;
+}
+
+.informaiton_telephone_1-1 {
+    position: relative;
+    left: 50px;
+    bottom: 2px;
+}
+
+/* Categoty */
+.main_table_control_3 {
+    position: relative;
+    top: 260px;
+    left: 180px;
+}
+
+.informaiton_category-3 {
+    color: #4f4f4f;
+}
+
+.informaiton_category_1-1 {
+    position: relative;
+    left: 50px;
+}
+
+/* Price */
+.main_table_control_4 {
+    position: relative;
+    top: 300px;
+    left: 180px;
+}
+
+.informaiton_price-4 {
+    color: #4f4f4f;
+}
+
+.informaiton_price_1-1 {
+    position: relative;
+    left: 65px;
+}
+
+/* Parking */
+.main_table_control_5 {
+    position: relative;
+    top: 340px;
+    left: 180px;
+}
+
+.informaiton_parking-5 {
+    color: #4f4f4f;
+}
+
+.informaiton_parking_1-1 {
+    position: relative;
+    left: 82px;
+}
+
+/* Opentime */
+.main_table_control_6 {
+    position: relative;
+    top: 380px;
+    left: 180px;
+}
+
+.informaiton_opentime-6 {
+    color: #4f4f4f;
+}
+
+.informaiton_opentime_1-1 {
+    position: relative;
+    left: 50px;
+}
+
+/* Lastorder */
+
+.main_table_control_7 {
+    position: relative;
+    top: 420px;
+    left: 180px;
+}
+
+.informaiton_lastorder-7 {
+    color: #4f4f4f;
+}
+
+.informaiton_lastorder_1-1 {
+    position: relative;
+    left: 35px;
+}
+
+/* Holiday */
+
+.main_table_control_8 {
+    position: relative;
+    top: 460px;
+    left: 180px;
+}
+
+.informaiton_holiday-8color {
+    color: #4f4f4f;
+}
+
+.informaiton_holiday_1-1 {
+    position: relative;
+    left: 81px;
+}
+
+/* Table end */
+
+.table_bottomline {
+    position: relative;
+    top: 500px;
+    left: 182px;
+    width: 860px;
+    border-bottom: 1px solid rgb(199, 199, 199);
+}
+
+/* Start container_3 */
+
+.container_3 {}
+
+.container_3_review_list {
+    position: relative;
+    top: 530px;
+    left: 180px;
+    font-size: 18px;
+}
+
+.container_3_review_review_1 {
+    color: #4f4f4f;
+}
+
+.container_3_review_tuple_1 {
+    position: relative;
+    right: 3px;
+    color: #7f7f7f;
+}
+
+.container_3_evaluation_list {
+    position: relative;
+    top: 515px;
+    left: 650px;
+    font-size: 16px;
+}
+
+.container_3_evaluation_list_1 {
+    color: #4f4f4f;
+}
+
+.container_3_evaluation_tuple_1 {
+    position: relative;
+    bottom: 2px;
+    right: 3px;
+    color: #7f7f7f;
+    padding-right: 10px;
+    border-right: 1.5px solid gray;
+
+
+}
+
+.container_3_good_list {
+    position: relative;
+    top: 499px;
+    left: 735px;
+    font-size: 16px;
+}
+
+.container_3_good_list_1 {
+    color: #4f4f4f;
+}
+
+.container_3_good_tuple_1 {
+    position: relative;
+    bottom: 2px;
+    right: 3px;
+    color: #7f7f7f;
+    padding-right: 10px;
+    border-right: 1.5px solid gray;
+}
+
+.container_3_fine_list {
+    position: relative;
+    top: 483px;
+    left: 835px;
+    font-size: 16px;
+}
+
+.container_3_fine_list_1 {
+    color: #4f4f4f;
+}
+
+.container_3_fine_tuple_1 {
+    position: relative;
+    right: 3px;
+    bottom: 2px;
+    color: #7f7f7f;
+    padding-right: 10px;
+    border-right: 1.5px solid gray;
+}
+
+.container_3_soso_list {
+    position: relative;
+    top: 467px;
+    left: 935px;
+    font-size: 16px;
+}
+
+.container_3_soso_list_1 {
+    color: #4f4f4f;
+}
+
+.container_3_soso_tuple_1 {
+    position: relative;
+    bottom: 1px;
+    right: 3px;
+    color: #7f7f7f;
+
+}
+
+/* Start_container_4 */
+.container_4 {
+    width: 800px;
+    margin: 0 auto;
+    margin-top: 20px;
+}
+
+.container_4 {
+    margin-bottom: 14px;
+}
+
+.container_4_cafe_review_img {
+    position: relative;
+    top: 500px;
+    right: 180px;
+    border: 3px solid black;
+    border-radius: 50%;
+    width: 70px;
+    height: 70px;
+}
+
+.container_4_cafe_review_img_font {
+    position: relative;
+    font-size: 14px;
+    top: 510px;
+    right: 173px;
+}
+
+.container_4_cafe_review_img_pencil {
+    position: relative;
+    top: 520px;
+    right: 175px;
+    background-image: url(/static/posts/images/icon/pencil.png);
+    background-size: cover;
+    height: 10px;
+    width: 10px;
+}
+
+.container_4_cafe_review_img_pencil_font {
+    position: relative;
+    left: 12px;
+    bottom: 5px;
+    font-size: 10px;
+    color: #cbcbcb;
+    letter-spacing: 3;
+}
+
+.container_4_cafe_review_img_star {
+    position: relative;
+    top: 510px;
+    right: 140px;
+    background-image: url(/static/posts/images/icon/star.png);
+    background-size: cover;
+    height: 10px;
+    width: 10px;
+}
+
+.container_4_cafe_review_img_star_font {
+    position: relative;
+    left: 12px;
+    bottom: 5px;
+    font-size: 10px;
+    color: #cbcbcb;
+    letter-spacing: 3;
+}
+
+/* --------------------------------------------------------- */
+
+.container_4_date {
+    position: relative;
+    top: 370px;
+    right: 58px;
+}
+
+.container_4_date_font {
+    color: #9b9b9b;
+    font-size: 14px;
+    line-height: 1.2;
+}
+
+.container_4_review_font {
+    position: relative;
+    top: 380px;
+    right: 60px;
+    line-height: 1.6;
+    font-size: 15px;
+    color: #000000;
+}
+
+.container_4_review_icon {
+    position: relative;
+    top: 310px;
+    left: 595px;
+    background-image: url(/static/posts/images/icon/smile.png);
+    background-size: cover;
+    width: 40px;
+    height: 40px;
+}
+
+.container_4_review_icon_font {
+    position: relative;
+    top: 320px;
+    left: 594px;
+    font-size: 15px;
+    font-weight: 600;
+    color: #4f4f4f;
+}
+
+/* ----------------------------------------------------------- */
+.container_4_review_img_list {
+    position: relative;
+    top: 350px;
+    right: 58px;
+}
+
+.container_4_review_img_con {
+    display: flex;
+
+}
+
+.container_4_review_img__01 {
+    background-image: url(/static/posts/images/dummy/a_.jpg);
+    background-size: cover;
+    width: 120px;
+    height: 120px;
+
+}
+
+.container_4_review_img__02 {
+    background-image: url(/static/posts/images/dummy/b_.jpg);
+    background-size: cover;
+    width: 120px;
+    height: 120px;
+    margin-left: 20px;
+}
+
+.container_4_review_img__03 {
+    background-image: url(/static/posts/images/dummy/c_.jpg);
+    background-size: cover;
+    width: 120px;
+    height: 120px;
+    margin-left: 20px;
+}
+
+.container_4_cafe_review_bottomline {
+    position: relative;
+    top: 50px;
+    right: 140px;
+    width: 860px;
+    border-bottom: 1px solid rgb(199, 199, 199);
+}
+
+.table_bottomline01 {
+    position: relative;
+    top: 400px;
+    left: 175px;
+    width: 860px;
+    border-bottom: 1px solid rgb(199, 199, 199);
+}
+
+/* Container_4 End */
+
+/* Start Container_4_1  */
+
+.container_4_1 {
+    position: relative;
+    width: 800px;
+    margin: 0 auto;
+    margin-top: 20px;
+    margin-bottom: 14px;
+}
+
+.container_4_cafe_review_img_1 {
+    position: relative;
+    top: 500px;
+    right: 180px;
+    border: 3px solid black;
+    border-radius: 50%;
+    width: 70px;
+    height: 70px;
+}
+
+.container_4_cafe_review_img_font_1 {
+    position: relative;
+    font-size: 14px;
+    top: 510px;
+    right: 173px;
+}
+
+.container_4_cafe_review_img_pencil_1 {
+    position: relative;
+    top: 520px;
+    right: 175px;
+    background-image: url(/static/posts/images/icon/pencil.png);
+    background-size: cover;
+    height: 10px;
+    width: 10px;
+}
+
+.container_4_cafe_review_img_pencil_font_1 {
+    position: relative;
+    left: 12px;
+    bottom: 5px;
+    font-size: 10px;
+    color: #cbcbcb;
+    letter-spacing: 3;
+}
+
+.container_4_cafe_review_img_star_1 {
+    position: relative;
+    top: 510px;
+    right: 140px;
+    background-image: url(/static/posts/images/icon/star.png);
+    background-size: cover;
+    height: 10px;
+    width: 10px;
+}
+
+.container_4_cafe_review_img_star_font_1 {
+    position: relative;
+    left: 12px;
+    bottom: 5px;
+    font-size: 10px;
+    color: #cbcbcb;
+    letter-spacing: 3;
+}
+
+/* --------------------------------------------------------- */
+
+.container_4_date_1 {
+    position: relative;
+    top: 370px;
+    right: 58px;
+}
+
+.container_4_date_font_1 {
+    color: #9b9b9b;
+    font-size: 14px;
+    line-height: 1.2;
+}
+
+.container_4_review_font_1 {
+    position: relative;
+    top: 380px;
+    right: 60px;
+    line-height: 1.6;
+    font-size: 15px;
+    color: #000000;
+}
+
+.container_4_review_icon_1 {
+    position: relative;
+    top: 310px;
+    left: 595px;
+    background-image: url(/static/posts/images/icon/smile.png);
+    background-size: cover;
+    width: 40px;
+    height: 40px;
+}
+
+.container_4_review_icon_font_1 {
+    position: relative;
+    top: 320px;
+    left: 594px;
+    font-size: 15px;
+    font-weight: 600;
+    color: #4f4f4f;
+}
+
+/* ----------------------------------------------------------- */
+.container_4_review_img_list_1 {
+    position: relative;
+    top: 350px;
+    right: 58px;
+}
+
+.container_4_review_img_con_1 {
+    display: flex;
+
+}
+
+.container_4_review_img__01_1 {
+    background-image: url(/static/posts/images/dummy/a_.jpg);
+    background-size: cover;
+    width: 120px;
+    height: 120px;
+
+}
+
+.container_4_review_img__02_1 {
+    background-image: url(/static/posts/images/dummy/b_.jpg);
+    background-size: cover;
+    width: 120px;
+    height: 120px;
+    margin-left: 20px;
+}
+
+.container_4_review_img__03_1 {
+    background-image: url(/static/posts/images/dummy/c_.jpg);
+    background-size: cover;
+    width: 120px;
+    height: 120px;
+    margin-left: 20px;
+}
+
+.container_4_cafe_review_bottomline_1 {
+    position: relative;
+    top: 50px;
+    right: 140px;
+    width: 860px;
+    border-bottom: 1px solid rgb(199, 199, 199);
+}
+
+.table_bottomline01_1 {
+    position: relative;
+    top: 400px;
+    left: 175px;
+    width: 860px;
+    border-bottom: 1px solid rgb(199, 199, 199);
+}
+
+#map {
+    position: relative;
+    bottom: 850px;
+    left: 1051px;
+    border: 1px solid black;
+}
